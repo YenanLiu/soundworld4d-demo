@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>SoundWorld4D</title>
+  <link rel="icon" href="data:,">
+  <script>
+    const destination = new URL('./episodes/index.html', location.href);
+    destination.search = location.search || '?scene=indoor';
+    destination.hash = location.hash;
+    location.replace(destination);
+  </script>
+</head>
+<body>
+  <p><a href="./episodes/index.html?scene=indoor">Open SoundWorld4D</a></p>
+</body>
+</html>
