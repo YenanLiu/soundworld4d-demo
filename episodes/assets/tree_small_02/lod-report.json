@@ -1,0 +1,20 @@
+[
+  {
+    "beforeTriangles": 94814,
+    "afterTriangles": 5848,
+    "error": 0.0012370934709906578,
+    "vertices": 5557
+  },
+  {
+    "beforeTriangles": 1939380,
+    "afterTriangles": 120549,
+    "error": 0.0049126967787742615,
+    "vertices": 94975
+  },
+  {
+    "beforeTriangles": 28293,
+    "afterTriangles": 1821,
+    "error": 0.003447862109169364,
+    "vertices": 1410
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "source": "https://raw.githubusercontent.com/facebookresearch/ears_dataset/main/speaker_statistics.json",
+  "activeSpeaker": {"id":"p002","gender":"female","file":"ears-p002-female-original.wav","sourceFile":"p002/emo_adoration_sentences.wav","durationSeconds":9.76475},
+  "replacedSpeaker": {"id":"p008","gender":"male","file":"ears-p008-original.wav","status":"retained for provenance; not used in either episode"},
+  "pairing": "Gender-compatible virtual character pairing, not speaker identity matching; original voice is not pitch shifted."
+}

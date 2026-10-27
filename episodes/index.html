@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f6f5">
+  <title>SoundWorld4D · Scene Episodes</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{"imports":{"three":"../vendor/three.module.js"}}</script>
+  <script src="../vendor/lucide.min.js"></script>
+  <script src="../vendor/jszip.min.js"></script>
+</head>
+<body>
+  <header>
+    <a class="brand" href="./index.html">SoundWorld<span>4D</span></a>
+    <nav class="segmented" aria-label="Scene">
+      <button data-scene="indoor" class="selected"><i data-lucide="house"></i>Indoor</button>
+      <button data-scene="outdoor"><i data-lucide="trees"></i>Outdoor</button>
+    </nav>
+    <div class="header-actions">
+      <button id="sources-btn" class="icon" title="Asset sources and limitations" aria-label="Asset sources and limitations"><i data-lucide="library"></i></button>
+      <button id="export-btn" class="icon" title="Export script, trajectories and audio" aria-label="Export script, trajectories and audio"><i data-lucide="download"></i></button>
+    </div>
+  </header>
+  <main>
+    <section class="workspace">
+      <div class="sectionbar"><div><span class="eyebrow" id="scene-kind">INDOOR / 01</span><h1 id="scene-title">A visitor opens and closes the door</h1></div><span class="status" id="load-state">Loading assets...</span></div>
+      <div class="views">
+        <div class="view primary">
+          <div class="canvas-wrap" id="ego-wrap"><canvas id="ego"></canvas><div class="view-label">First person / listener</div><span class="timebadge" id="timebadge">00.0 s</span></div>
+          <div class="view-meta"><span id="event-now">Preparing scene</span><span id="camera-coordinate">x - / z -</span></div>
+        </div>
+        <div class="view overview">
+          <div class="canvas-wrap" id="map-wrap"><canvas id="map"></canvas><div class="view-label">Scene / trajectory overview</div><button id="overview-export" class="icon map-save" title="Save trajectory overview" aria-label="Save trajectory overview"><i data-lucide="image-down"></i></button></div>
+          <div class="legend"><span><b class="camera-line"></b>Camera C</span><span><b class="source-line"></b>Person S2</span><span><b class="static-dot"></b>Fixed S1</span></div>
+        </div>
+      </div>
+      <div class="transport">
+        <button id="play" class="icon play" title="Play" aria-label="Play"><i data-lucide="play"></i></button>
+        <button id="restart" class="icon" title="Restart" aria-label="Restart"><i data-lucide="rotate-ccw"></i></button>
+        <output id="clock">00.0 / 32.0 s</output>
+        <input id="seek" type="range" min="0" max="32" value="0" step="0.02" aria-label="Timeline">
+        <button id="mute" class="icon" title="Mute" aria-label="Mute"><i data-lucide="volume-2"></i></button>
+      </div>
+      <section class="telemetry" aria-label="Live source and listener telemetry">
+        <div class="telemetry-heading"><h2>Source / listener telemetry</h2><span id="listener-pose"></span></div>
+        <div class="acoustic-controls"><label><input id="reverb" type="checkbox" checked>Room reflections</label><input id="wet" type="range" min="0" max="1.2" step=".05" value=".55" aria-label="Reflection return level"><output id="wet-value">55%</output><span id="reverb-label"></span></div>
+        <div class="source-readouts" id="source-readouts"></div>
+      </section>
+      <div class="tracks" id="tracks"></div>
+    </section>
+    <aside>
+      <div class="aside-title"><h2>Event script</h2><span>32 s</span></div>
+      <p class="story" id="story"></p>
+      <ol class="events" id="events"></ol>
+      <div class="technical-note"><i data-lucide="headphones"></i><span>HRTF / occlusion proxy / assumed room reflections<br>Not a validated physical acoustic simulation</span></div>
+    </aside>
+  </main>
+  <footer><span id="scene-source">Scene provenance</span><a href="./README.md" target="_blank">Research notes</a></footer>
+  <dialog id="source-dialog">
+    <div class="dialog-head"><h2>Assets and usage scope</h2><button id="close-dialog" class="icon" title="Close" aria-label="Close"><i data-lucide="x"></i></button></div>
+    <div id="source-details"></div>
+  </dialog>
+  <script type="module" src="./app.mjs"></script>
+</body>
+</html>

@@ -1,0 +1,1623 @@
+{
+  "source": "AWS RoboMaker Small House World",
+  "revision": "dd44be6205b2e6577bf641300dacc1699cb2ca81",
+  "source_coordinates": "meters, right-handed Z-up",
+  "runtime_coordinates": "[source.x, source.z, -source.y], right-handed Y-up",
+  "objects": [
+    {
+      "id": "AirconditionerA_01_001",
+      "model": "aws_robomaker_residential_AirconditionerA_01",
+      "pose": [
+        -9.19941,
+        2.41123,
+        2.084544,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_AirconditionerA_01/meshes/aws_AirconditionerA_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "AirconditionerB_01_001",
+      "model": "aws_robomaker_residential_AirconditionerB_01",
+      "pose": [
+        -2.004656,
+        -5.22661,
+        0.003485,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_AirconditionerB_01/meshes/aws_AirconditionerB_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Bed_01_001",
+      "model": "aws_robomaker_residential_Bed_01",
+      "pose": [
+        -6.165067,
+        2.03056,
+        -1e-05,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Bed_01/meshes/aws_Bed_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "NightStand_01_001",
+      "model": "aws_robomaker_residential_NightStand_01",
+      "pose": [
+        -7.72551,
+        2.86042,
+        0.005258,
+        -2e-06,
+        0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_NightStand_01/meshes/aws_NightStand_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "NightStand_01_002",
+      "model": "aws_robomaker_residential_NightStand_01",
+      "pose": [
+        -4.407341,
+        2.86042,
+        0.005256,
+        0.0,
+        2e-06,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_NightStand_01/meshes/aws_NightStand_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Board_01_001",
+      "model": "aws_robomaker_residential_Board_01",
+      "pose": [
+        2.779073,
+        -5.392703,
+        1.538173,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Board_01/meshes/aws_Board_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "ChairA_01_001",
+      "model": "aws_robomaker_residential_ChairA_01",
+      "pose": [
+        7.11516,
+        0.209028,
+        0.024685,
+        1e-06,
+        -0.0,
+        -1.55607
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_ChairA_01/meshes/aws_ChairA_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "ChairA_01_002",
+      "model": "aws_robomaker_residential_ChairA_01",
+      "pose": [
+        6.25506,
+        0.219468,
+        0.011308,
+        0.0,
+        0.0,
+        -1.50414
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_ChairA_01/meshes/aws_ChairA_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "ChairA_01_003",
+      "model": "aws_robomaker_residential_ChairA_01",
+      "pose": [
+        6.06678,
+        1.68075,
+        0.01,
+        0.0,
+        -0.0,
+        1.56986
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_ChairA_01/meshes/aws_ChairA_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "ChairA_01_004",
+      "model": "aws_robomaker_residential_ChairA_01",
+      "pose": [
+        7.00277,
+        1.67074,
+        0.0,
+        0.0,
+        -0.0,
+        1.52363
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_ChairA_01/meshes/aws_ChairA_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "ChairA_01_005",
+      "model": "aws_robomaker_residential_ChairA_01",
+      "pose": [
+        -8.27094,
+        1.91665,
+        0.03665,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_ChairA_01/meshes/aws_ChairA_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "ChairD_01_001",
+      "model": "aws_robomaker_residential_ChairD_01",
+      "pose": [
+        -1.380775,
+        4.104456,
+        0.0,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_ChairD_01/meshes/aws_ChairD_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "ChairD_01_002",
+      "model": "aws_robomaker_residential_ChairD_01",
+      "pose": [
+        0.325214,
+        4.104456,
+        0.0,
+        0.0,
+        -0.0,
+        -3.138741
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_ChairD_01/meshes/aws_ChairD_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "ChairD_01_003",
+      "model": "aws_robomaker_residential_ChairD_01",
+      "pose": [
+        -8.270775,
+        -4.504456,
+        0.0,
+        0.0,
+        -0.0,
+        0.869673
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_ChairD_01/meshes/aws_ChairD_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Chandelier_01_001",
+      "model": "aws_robomaker_residential_Chandelier_01",
+      "pose": [
+        1.221061,
+        4.15574,
+        1.295,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Chandelier_01/meshes/aws_Chandelier_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Chandelier_01_002",
+      "model": "aws_robomaker_residential_Chandelier_01",
+      "pose": [
+        -6.451061,
+        -0.69204,
+        1.81,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Chandelier_01/meshes/aws_Chandelier_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Chandelier_01_003",
+      "model": "aws_robomaker_residential_Chandelier_01",
+      "pose": [
+        7.824061,
+        -1.59,
+        1.751,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Chandelier_01/meshes/aws_Chandelier_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Chandelier_01_004",
+      "model": "aws_robomaker_residential_Chandelier_01",
+      "pose": [
+        1.221061,
+        -1.59204,
+        1.7873,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Chandelier_01/meshes/aws_Chandelier_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Carpet_01_001",
+      "model": "aws_robomaker_residential_Carpet_01",
+      "pose": [
+        0.78505,
+        -1.106647,
+        0.001106,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Carpet_01/meshes/aws_Carpet_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Carpet_01_002",
+      "model": "aws_robomaker_residential_Carpet_01",
+      "pose": [
+        2.85405,
+        3.45,
+        0.000585,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Carpet_01/meshes/aws_Carpet_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "SecurityCamera_01_001",
+      "model": "aws_robomaker_residential_SecurityCamera_01",
+      "pose": [
+        0.842134,
+        -4.996294,
+        0.495067,
+        0.0,
+        -0.0,
+        -2.841039
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_SecurityCamera_01/meshes/aws_SecurityCamera_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "CoffeeTable_01_001",
+      "model": "aws_robomaker_residential_CoffeeTable_01",
+      "pose": [
+        1.512301,
+        -1.733438,
+        0.041983,
+        0.0,
+        0.0,
+        0.01
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_CoffeeTable_01/meshes/aws_CoffeeTable_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "CookingBench_01_001",
+      "model": "aws_robomaker_residential_CookingBench_01",
+      "pose": [
+        9.038383,
+        -3.35114,
+        0.90361,
+        0.0,
+        -0.0,
+        3.137133
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_CookingBench_01/meshes/aws_CookingBench_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Curtain_01_001",
+      "model": "aws_robomaker_residential_Curtain_01",
+      "pose": [
+        -9.172642,
+        0.20376,
+        0.0,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Curtain_01/meshes/aws_Curtain_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "KitchenTable_01_001",
+      "model": "aws_robomaker_residential_KitchenTable_01",
+      "pose": [
+        6.55269,
+        0.951173,
+        -6e-06,
+        0.0,
+        -0.0,
+        -1.56413
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_KitchenTable_01/meshes/aws_KitchenTable_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "ReadingDesk_01_001",
+      "model": "aws_robomaker_residential_ReadingDesk_01",
+      "pose": [
+        -8.987262,
+        2.057058,
+        0.0,
+        0.0,
+        -0.0,
+        -0.004638
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_ReadingDesk_01/meshes/aws_ReadingDesk_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "BalconyTable_01_001",
+      "model": "aws_robomaker_residential_BalconyTable_01",
+      "pose": [
+        -0.55624,
+        4.111241,
+        0.0,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_BalconyTable_01/meshes/aws_BalconyTable_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Door_01_001",
+      "model": "aws_robomaker_residential_Door_01",
+      "pose": [
+        6.001449,
+        -5.549002,
+        0.0,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Door_01/meshes/aws_Door_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Dumbbell_01_001",
+      "model": "aws_robomaker_residential_Dumbbell_01",
+      "pose": [
+        2.512849,
+        2.717787,
+        0.002183,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Dumbbell_01/meshes/aws_Dumbbell_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Tablet_01_001",
+      "model": "aws_robomaker_residential_Tablet_01",
+      "pose": [
+        1.57283,
+        -1.775857,
+        0.40179,
+        -0.020625,
+        -8e-05,
+        -0.006317
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Tablet_01/meshes/aws_Tablet_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "FitnessEquipment_01_001",
+      "model": "aws_robomaker_residential_FitnessEquipment_01",
+      "pose": [
+        3.48472,
+        3.169104,
+        0.003168,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_FitnessEquipment_01/meshes/aws_FitnessEquipment_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "FoldingDoor_01_001",
+      "model": "aws_robomaker_residential_FoldingDoor_01",
+      "pose": [
+        -2.461096,
+        1.844219,
+        0.041881,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_FoldingDoor_01/meshes/aws_FoldingDoor_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "FoldingDoor_01_002",
+      "model": "aws_robomaker_residential_FoldingDoor_01",
+      "pose": [
+        -2.461096,
+        -4.05332,
+        0.041881,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_FoldingDoor_01/meshes/aws_FoldingDoor_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Handle_01_001",
+      "model": "aws_robomaker_residential_Handle_01",
+      "pose": [
+        5.724,
+        -5.523,
+        0.9938,
+        0.0,
+        -0.0,
+        -3.1415
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Handle_01/meshes/aws_Handle_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "HouseWallB_01_001",
+      "model": "aws_robomaker_residential_HouseWallB_01",
+      "pose": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_HouseWallB_01/meshes/aws_HouseWallB_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "FloorB_01_001",
+      "model": "aws_robomaker_residential_FloorB_01",
+      "pose": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_FloorB_01/meshes/aws_FloorB_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "FoldingDoor_02_001",
+      "model": "aws_robomaker_residential_FoldingDoor_02",
+      "pose": [
+        4.674231,
+        2.46451,
+        0.0,
+        0.0,
+        -0.0,
+        3.14159
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_FoldingDoor_02/meshes/aws_FoldingDoor_02_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "FoldingDoor_02_002",
+      "model": "aws_robomaker_residential_FoldingDoor_02",
+      "pose": [
+        4.8912,
+        -4.84968,
+        0.0,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_FoldingDoor_02/meshes/aws_FoldingDoor_02_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "KitchenCabinet_01_001",
+      "model": "aws_robomaker_residential_KitchenCabinet_01",
+      "pose": [
+        8.002009,
+        -3.836509,
+        0.012068,
+        0.0,
+        -0.0,
+        -3.140001
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_KitchenCabinet_01/meshes/aws_KitchenCabinet_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "KitchenUtensils_01_001",
+      "model": "aws_robomaker_residential_KitchenUtensils_01",
+      "pose": [
+        9.285478,
+        -5.021261,
+        1.141805,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_KitchenUtensils_01/meshes/aws_KitchenUtensils_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "LightC_01_001",
+      "model": "aws_robomaker_residential_LightC_01",
+      "pose": [
+        1.769567,
+        -5.444371,
+        2.0,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_LightC_01/meshes/aws_LightC_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "LightC_01_002",
+      "model": "aws_robomaker_residential_LightC_01",
+      "pose": [
+        -0.138245,
+        -5.444371,
+        2.0,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_LightC_01/meshes/aws_LightC_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "PortraitA_01",
+      "model": "aws_robomaker_residential_PortraitA_01",
+      "pose": [
+        -2.71236,
+        -4.817539,
+        1.0,
+        0.0,
+        -0.0,
+        1.566796
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_PortraitA_01/meshes/aws_PortraitA_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "PortraitB_01",
+      "model": "aws_robomaker_residential_PortraitB_01",
+      "pose": [
+        -1.279683,
+        -5.42963,
+        0.0,
+        -0.076901,
+        0.0,
+        -3.116718
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_PortraitB_01/meshes/aws_PortraitB_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "PortraitB_02",
+      "model": "aws_robomaker_residential_PortraitB_02",
+      "pose": [
+        5.737017,
+        3.08031,
+        0.3,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_PortraitB_02/meshes/aws_PortraitB_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "PortraitB_03",
+      "model": "aws_robomaker_residential_PortraitB_03",
+      "pose": [
+        3.07138,
+        -5.349366,
+        0.005494,
+        -0.168428,
+        0.0,
+        3.104232
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_PortraitB_03/meshes/aws_PortraitB_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "PortraitA_02",
+      "model": "aws_robomaker_residential_PortraitA_02",
+      "pose": [
+        7.937017,
+        3.08031,
+        0.3,
+        0.0,
+        -0.0,
+        3.14
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_PortraitA_02/meshes/aws_PortraitA_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "PortraitC_01",
+      "model": "aws_robomaker_residential_PortraitC_01",
+      "pose": [
+        -9.294904,
+        -4.526084,
+        1.0,
+        0.0,
+        -0.0,
+        1.554734
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_PortraitC_01/meshes/aws_PortraitC_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "PortraitD_01",
+      "model": "aws_robomaker_residential_PortraitD_01",
+      "pose": [
+        0.789763,
+        -5.478725,
+        1.8,
+        0.0,
+        -0.0,
+        3.138531
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_PortraitD_01/meshes/aws_PortraitD_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "PortraitD_02",
+      "model": "aws_robomaker_residential_PortraitD_02",
+      "pose": [
+        6.870181,
+        3.08031,
+        1.488439,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_PortraitD_02/meshes/aws_PortraitD_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "PortraitE_01",
+      "model": "aws_robomaker_residential_PortraitE_01",
+      "pose": [
+        -5.773094,
+        -5.492466,
+        1.0,
+        0.0,
+        -0.0,
+        3.132627
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_PortraitE_01/meshes/aws_PortraitE_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "PortraitE_02",
+      "model": "aws_robomaker_residential_PortraitE_02",
+      "pose": [
+        -6.193025,
+        -1.590208,
+        0.3,
+        0.0,
+        -0.0,
+        0.00429
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_PortraitE_02/meshes/aws_PortraitE_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "DeskPortraitA_01",
+      "model": "aws_robomaker_residential_DeskPortraitA_01",
+      "pose": [
+        -0.036864,
+        -5.110156,
+        0.49866,
+        0.0,
+        -0.0,
+        2.927784
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_DeskPortraitA_01/meshes/aws_DeskPortraitA_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "DeskPortraitA_02",
+      "model": "aws_robomaker_residential_DeskPortraitA_02",
+      "pose": [
+        2.046082,
+        -1.892926,
+        0.070388,
+        -0.018328,
+        -0.000441,
+        1.576216
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_DeskPortraitA_02/meshes/aws_DeskPortraitA_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "DeskPortraitC_01",
+      "model": "aws_robomaker_residential_DeskPortraitC_01",
+      "pose": [
+        -7.746377,
+        2.731075,
+        0.69462,
+        0.000488,
+        -0.000359,
+        -0.055499
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_DeskPortraitC_01/meshes/aws_DeskPortraitC_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "DeskPortraitC_02",
+      "model": "aws_robomaker_residential_DeskPortraitC_02",
+      "pose": [
+        0.964613,
+        -1.586951,
+        0.127676,
+        0.001614,
+        -0.000545,
+        -1.578699
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_DeskPortraitC_02/meshes/aws_DeskPortraitC_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "DeskPortraitD_01",
+      "model": "aws_robomaker_residential_DeskPortraitD_01",
+      "pose": [
+        2.64556,
+        -5.376225,
+        1.573738,
+        0.0,
+        -0.0,
+        -3.112826
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_DeskPortraitD_01/meshes/aws_DeskPortraitD_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "DeskPortraitD_02",
+      "model": "aws_robomaker_residential_DeskPortraitD_02",
+      "pose": [
+        -0.589211,
+        -5.10989,
+        0.192145,
+        -1.5e-05,
+        -0.000174,
+        -3.112544
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_DeskPortraitD_02/meshes/aws_DeskPortraitD_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "DeskPortraitD_03",
+      "model": "aws_robomaker_residential_DeskPortraitD_03",
+      "pose": [
+        1.826729,
+        -1.464881,
+        0.126208,
+        1e-05,
+        6e-06,
+        -3.11438
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_DeskPortraitD_03/meshes/aws_DeskPortraitD_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "DeskPortraitD_04",
+      "model": "aws_robomaker_residential_DeskPortraitD_04",
+      "pose": [
+        4.302132,
+        -5.176568,
+        0.202496,
+        0.007118,
+        -1e-06,
+        3.046683
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_DeskPortraitD_04/meshes/aws_DeskPortraitD_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "DeskPortraitB_01",
+      "model": "aws_robomaker_residential_DeskPortraitB_01",
+      "pose": [
+        3.547376,
+        -5.083898,
+        -0.01266,
+        -0.336622,
+        -1e-06,
+        3.046741
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_DeskPortraitB_01/meshes/aws_DeskPortraitB_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "DeskPortraitB_02",
+      "model": "aws_robomaker_residential_DeskPortraitB_02",
+      "pose": [
+        2.48627,
+        -5.102525,
+        -0.01266,
+        -0.336621,
+        0.0,
+        3.046798
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_DeskPortraitB_02/meshes/aws_DeskPortraitB_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Rangehood_01_001",
+      "model": "aws_robomaker_residential_Rangehood_01",
+      "pose": [
+        9.019794,
+        -3.36994,
+        1.507605,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Rangehood_01/meshes/aws_Rangehood_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Refrigerator_01_001",
+      "model": "aws_robomaker_residential_Refrigerator_01",
+      "pose": [
+        8.702731,
+        -1.032031,
+        0.0,
+        0.0,
+        -0.0,
+        -1.563499
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Refrigerator_01/meshes/aws_Refrigerator_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "SeasoningBox_01_001",
+      "model": "aws_robomaker_residential_SeasoningBox_01",
+      "pose": [
+        9.107968,
+        -2.651726,
+        0.902458,
+        -6e-06,
+        3.4e-05,
+        0.00129
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_SeasoningBox_01/meshes/aws_SeasoningBox_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "ShoeRack_01_001",
+      "model": "aws_robomaker_residential_ShoeRack_01",
+      "pose": [
+        4.297978,
+        -5.173566,
+        0.0,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_ShoeRack_01/meshes/aws_ShoeRack_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "SofaC_01_001",
+      "model": "aws_robomaker_residential_SofaC_01",
+      "pose": [
+        0.330699,
+        -1.902792,
+        0.065992,
+        0.0,
+        0.0,
+        1.571733
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_SofaC_01/meshes/aws_SofaC_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Tableware_01_001",
+      "model": "aws_robomaker_residential_Tableware_01",
+      "pose": [
+        7.15317,
+        0.982767,
+        0.817812,
+        -0.001238,
+        -0.000976,
+        1.02476
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Tableware_01/meshes/aws_Tableware_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Trash_01_001",
+      "model": "aws_robomaker_residential_Trash_01",
+      "pose": [
+        2.360151,
+        -0.796238,
+        0.011,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Trash_01/meshes/aws_Trash_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Trash_01_002",
+      "model": "aws_robomaker_residential_Trash_01",
+      "pose": [
+        -8.704151,
+        1.00058,
+        0.011,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Trash_01/meshes/aws_Trash_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "TV_01_001",
+      "model": "aws_robomaker_residential_TV_01",
+      "pose": [
+        0.824259,
+        -5.382968,
+        0.676282,
+        0.0,
+        -0.0,
+        -1.561744
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_TV_01/meshes/aws_TV_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "TV_02_001",
+      "model": "aws_robomaker_residential_TV_02",
+      "pose": [
+        -6.197322,
+        -1.388739,
+        0.676282,
+        0.0,
+        -0.0,
+        -1.561744
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_TV_02/meshes/aws_TV_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "TVCabinet_01_001",
+      "model": "aws_robomaker_residential_TVCabinet_01",
+      "pose": [
+        0.629509,
+        -5.183576,
+        -0.017049,
+        0.0,
+        -0.0,
+        1.5792
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_TVCabinet_01/meshes/aws_TVCabinet_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Vase_01_001",
+      "model": "aws_robomaker_residential_Vase_01",
+      "pose": [
+        3.055663,
+        -5.41308,
+        1.574958,
+        3e-06,
+        0.0017,
+        0.00084
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Vase_01/meshes/aws_Vase_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "RoomWall_01_001",
+      "model": "aws_robomaker_residential_RoomWall_01",
+      "pose": [
+        -6.09755,
+        -1.49618,
+        0.028124,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_RoomWall_01/meshes/aws_RoomWall_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "Wardrobe_01_001",
+      "model": "aws_robomaker_residential_Wardrobe_01",
+      "pose": [
+        -3.14671,
+        2.476204,
+        0.000704,
+        0.0,
+        -0.0,
+        -1.569673
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_Wardrobe_01/meshes/aws_Wardrobe_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "RoomWindow_01_001",
+      "model": "aws_robomaker_residential_RoomWindow_01",
+      "pose": [
+        -9.4186,
+        -0.026285,
+        0.502739,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_RoomWindow_01/meshes/aws_RoomWindow_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "RoomWindow_01_002",
+      "model": "aws_robomaker_residential_RoomWindow_01",
+      "pose": [
+        -9.4186,
+        -2.37409,
+        0.502739,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_RoomWindow_01/meshes/aws_RoomWindow_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "RoomWindow_01_003",
+      "model": "aws_robomaker_residential_RoomWindow_01",
+      "pose": [
+        9.422616,
+        -3.373981,
+        0.502739,
+        0.0,
+        -0.0,
+        -3.136099
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_RoomWindow_01/meshes/aws_RoomWindow_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "RoomWindow_01_004",
+      "model": "aws_robomaker_residential_RoomWindow_01",
+      "pose": [
+        9.422558,
+        0.96852,
+        0.496581,
+        0.0,
+        -0.0,
+        -3.136099
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_RoomWindow_01/meshes/aws_RoomWindow_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "RoomWindow_01_005",
+      "model": "aws_robomaker_residential_RoomWindow_01",
+      "pose": [
+        4.722317,
+        4.470281,
+        0.502739,
+        0.0,
+        -0.0,
+        -3.136099
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_RoomWindow_01/meshes/aws_RoomWindow_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "RoomWindow_01_006",
+      "model": "aws_robomaker_residential_RoomWindow_01",
+      "pose": [
+        3.48852,
+        5.600688,
+        0.502739,
+        0.0,
+        -0.0,
+        -1.566274
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_RoomWindow_01/meshes/aws_RoomWindow_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "RoomWindow_01_007",
+      "model": "aws_robomaker_residential_RoomWindow_01",
+      "pose": [
+        1.140949,
+        5.600688,
+        0.502739,
+        0.0,
+        -0.0,
+        -1.566274
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_RoomWindow_01/meshes/aws_RoomWindow_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "RoomWindow_01_008",
+      "model": "aws_robomaker_residential_RoomWindow_01",
+      "pose": [
+        -1.19934,
+        5.600688,
+        0.502739,
+        0.0,
+        -0.0,
+        -1.566274
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_RoomWindow_01/meshes/aws_RoomWindow_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    },
+    {
+      "id": "RoomWindow_01_009",
+      "model": "aws_robomaker_residential_RoomWindow_01",
+      "pose": [
+        -2.396624,
+        4.387607,
+        0.502739,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "mesh": "assets/house/models/aws_robomaker_residential_RoomWindow_01/meshes/aws_RoomWindow_01_visual.DAE",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ceiling": false
+    }
+  ]
+}

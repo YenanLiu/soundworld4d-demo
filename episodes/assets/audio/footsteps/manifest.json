@@ -1,0 +1,162 @@
+{
+  "wood": {
+    "source": "https://bigsoundbank.com/steps-on-a-wooden-floor-4-s1518.html",
+    "license": "CC0",
+    "collectionGain": 0.4548169853873087,
+    "samples": [
+      {
+        "sourceStart": 3.2042291666666665,
+        "sourceEnd": 3.684229166666667,
+        "file": "wood-01.wav",
+        "peakOffset": 0.06,
+        "duration": 0.48,
+        "peak": 0.29697529947199425,
+        "rms": 0.02800226088886629
+      },
+      {
+        "sourceStart": 5.1038125,
+        "sourceEnd": 5.5838125,
+        "file": "wood-02.wav",
+        "peakOffset": 0.06,
+        "duration": 0.48,
+        "peak": 0.1553402625476666,
+        "rms": 0.01301483588571947
+      },
+      {
+        "sourceStart": 8.0354375,
+        "sourceEnd": 8.5154375,
+        "file": "wood-03.wav",
+        "peakOffset": 0.06,
+        "duration": 0.48,
+        "peak": 0.25239846865254695,
+        "rms": 0.02211736085628987
+      },
+      {
+        "sourceStart": 9.061125,
+        "sourceEnd": 9.541125,
+        "file": "wood-04.wav",
+        "peakOffset": 0.06,
+        "duration": 0.48,
+        "peak": 0.31427027158882254,
+        "rms": 0.020251496432810098
+      },
+      {
+        "sourceStart": 13.7691875,
+        "sourceEnd": 14.2491875,
+        "file": "wood-05.wav",
+        "peakOffset": 0.06,
+        "duration": 0.48,
+        "peak": 0.1605960669455116,
+        "rms": 0.017159480349432436
+      },
+      {
+        "sourceStart": 14.758083333333333,
+        "sourceEnd": 15.238083333333334,
+        "file": "wood-06.wav",
+        "peakOffset": 0.06,
+        "duration": 0.48,
+        "peak": 0.18188387529138403,
+        "rms": 0.015460513801632925
+      },
+      {
+        "sourceStart": 18.509875,
+        "sourceEnd": 18.989875,
+        "file": "wood-07.wav",
+        "peakOffset": 0.06,
+        "duration": 0.48,
+        "peak": 0.3230487782271243,
+        "rms": 0.020719573471704274
+      },
+      {
+        "sourceStart": 20.410666666666668,
+        "sourceEnd": 20.890666666666668,
+        "file": "wood-08.wav",
+        "peakOffset": 0.06,
+        "duration": 0.48,
+        "peak": 0.34,
+        "rms": 0.025442526974748636
+      }
+    ]
+  },
+  "grass": {
+    "source": "https://freesound.org/people/SilentStrikeZ/sounds/389625/",
+    "license": "CC0",
+    "collectionGain": 5.238489106700127,
+    "samples": [
+      {
+        "sourceStart": 3.50475,
+        "sourceEnd": 3.98475,
+        "file": "grass-01.wav",
+        "peakOffset": 0.06,
+        "duration": 0.48,
+        "peak": 0.2558659457735324,
+        "rms": 0.026904378954882124
+      },
+      {
+        "sourceStart": 4.6530625,
+        "sourceEnd": 5.1330625,
+        "file": "grass-02.wav",
+        "peakOffset": 0.06,
+        "duration": 0.48,
+        "peak": 0.27044586824308314,
+        "rms": 0.028324519974122334
+      },
+      {
+        "sourceStart": 6.325270833333334,
+        "sourceEnd": 6.805270833333333,
+        "file": "grass-03.wav",
+        "peakOffset": 0.06,
+        "duration": 0.48,
+        "peak": 0.34,
+        "rms": 0.029559364357444478
+      },
+      {
+        "sourceStart": 7.509291666666667,
+        "sourceEnd": 7.9892916666666665,
+        "file": "grass-04.wav",
+        "peakOffset": 0.06,
+        "duration": 0.48,
+        "peak": 0.3059687753997177,
+        "rms": 0.028449643935196247
+      },
+      {
+        "sourceStart": 8.689,
+        "sourceEnd": 9.169,
+        "file": "grass-05.wav",
+        "peakOffset": 0.06,
+        "duration": 0.48,
+        "peak": 0.25709866833047273,
+        "rms": 0.027232306118032987
+      },
+      {
+        "sourceStart": 10.570645833333334,
+        "sourceEnd": 11.050645833333334,
+        "file": "grass-06.wav",
+        "peakOffset": 0.06,
+        "duration": 0.48,
+        "peak": 0.23118217308692177,
+        "rms": 0.027191357892452302
+      },
+      {
+        "sourceStart": 11.220166666666668,
+        "sourceEnd": 11.700166666666666,
+        "file": "grass-07.wav",
+        "peakOffset": 0.06,
+        "duration": 0.48,
+        "peak": 0.19269524068015925,
+        "rms": 0.02562090967299676
+      },
+      {
+        "sourceStart": 14.185666666666666,
+        "sourceEnd": 14.665666666666667,
+        "file": "grass-08.wav",
+        "peakOffset": 0.06,
+        "duration": 0.48,
+        "peak": 0.13130656572248744,
+        "rms": 0.022333984777033
+      }
+    ]
+  },
+  "processing": "Mono 48 kHz; mild rumble/high-frequency filtering, short edge fades, collection-level gain. Distinct real footfalls, no pitch shifting, no per-hit peak normalization. The dominant recorded impact is aligned to the rendered toe-contact phase.",
+  "limitations": "Surface-category compatible, not measured against the rendered shoes, person or floor. Wood is a lossless outdoor wood-deck recording; grass comes from a public HQ MP3 preview. Source ambience may remain. Left/right assignments are animation labels, not measured recording identities."
+}

@@ -1,0 +1,42 @@
+{
+  "footstepBank": "footsteps/manifest.json; prepared separately by tools/prepare-footsteps.py",
+  "fan": {
+    "source": "https://freesound.org/people/TimBahrij/sounds/191580/",
+    "license": "CC0",
+    "excerptSeconds": [
+      6,
+      15.5
+    ],
+    "loopCrossfadeSeconds": 0.16,
+    "limitations": "HQ preview excerpt of a real desk fan; not anechoic or matched to the authored fan model."
+  },
+  "rooms": [
+    {
+      "name": "bedroom",
+      "dimensionsMeters": [
+        4.0,
+        3.8,
+        2.6
+      ],
+      "targetRT60": 0.5,
+      "estimatedRT60": 0.49775742045909316,
+      "absorption": 0.17945936847786723,
+      "imageSourceOrder": 50,
+      "engine": "pyroomacoustics 0.10.1"
+    },
+    {
+      "name": "living",
+      "dimensionsMeters": [
+        7.0,
+        5.5,
+        2.6
+      ],
+      "targetRT60": 0.75,
+      "estimatedRT60": 0.9159172045803614,
+      "absorption": 0.15143186814516751,
+      "imageSourceOrder": 50,
+      "engine": "pyroomacoustics 0.10.1"
+    }
+  ],
+  "limitations": "Fixed stereo shoebox reflection responses, not moving-pose RIRs of the actual house mesh. Room dimensions and RT60 targets are illustrative assumptions, not measurements. Direct arrivals removed; energy normalization is for audition, not calibrated sound pressure."
+}
