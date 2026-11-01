@@ -1,3 +1,23 @@
+export const SPATIAL_AUDIO_SETTINGS=Object.freeze({
+  panningModel:'HRTF',distanceModel:'inverse',rolloffFactor:1,maxDistance:60,
+  clearLowpassHz:19000,occludedDirectGain:.24,occludedLowpassHz:1050,
+  occludedReflectionGain:.55,reflectionDistanceFactor:.3,
+});
+
+export function sourceMixSettings(item,blocked,enabled=true){
+  const model=SPATIAL_AUDIO_SETTINGS,occlusion=item.occlusion;
+  const distance=Math.max(item.refDistance,item.distance);
+  const cutoff=occlusion?.lowpassHz??model.occludedLowpassHz;
+  return {
+    sourceGain:enabled&&item.enabled!==false?item.gain:0,
+    distanceGain:item.refDistance/(item.refDistance+model.rolloffFactor*(distance-item.refDistance)),
+    occlusionGain:blocked?(occlusion?.directGain??model.occludedDirectGain):1,
+    directLowpassHz:blocked?cutoff:model.clearLowpassHz,
+    reflectionLowpassHz:blocked&&occlusion?cutoff:model.clearLowpassHz,
+    reflectionSendGain:(item.reverbSend??1)*item.refDistance/(item.refDistance+model.reflectionDistanceFactor*item.distance)*(blocked?(occlusion?.reflectionGain??model.occludedReflectionGain):1),
+  };
+}
+
 export function roomMix(state){
   const u=Math.max(0,Math.min(1,(state.camera.position[0]+2.8)/.8)),living=u*u*(3-2*u);
   return [1-living,living];
@@ -17,9 +37,10 @@ export function createReflectionBus(context,episode,buffers,destination,options=
 }
 
 export function createSourceChannel(context,source,reflections,destination){
-  const input=context.createGain(),panner=new PannerNode(context,{panningModel:'HRTF',distanceModel:'inverse',refDistance:source.refDistance,rolloffFactor:1,maxDistance:60});
-  const filter=context.createBiquadFilter();filter.type='lowpass';filter.frequency.value=19000;
-  const gain=context.createGain(),send=context.createGain(),sendFilter=context.createBiquadFilter();sendFilter.type='lowpass';sendFilter.frequency.value=19000;
+  const model=SPATIAL_AUDIO_SETTINGS;
+  const input=context.createGain(),panner=new PannerNode(context,{panningModel:model.panningModel,distanceModel:model.distanceModel,refDistance:source.refDistance,rolloffFactor:model.rolloffFactor,maxDistance:model.maxDistance});
+  const filter=context.createBiquadFilter();filter.type='lowpass';filter.frequency.value=model.clearLowpassHz;
+  const gain=context.createGain(),send=context.createGain(),sendFilter=context.createBiquadFilter();sendFilter.type='lowpass';sendFilter.frequency.value=model.clearLowpassHz;
   input.connect(panner);panner.connect(filter);filter.connect(gain);gain.connect(destination);input.connect(sendFilter);sendFilter.connect(send);send.connect(reflections.input);
   return {source,input,panner,filter,gain,send,sendFilter,voices:[],dispose(){for(const v of this.voices){try{v.node.stop();}catch{}v.node.disconnect();v.envelope.disconnect();}for(const n of [input,panner,filter,gain,send,sendFilter])n.disconnect();}};
 }
@@ -43,9 +64,8 @@ export function scheduleSource(context,channel,buffers,from=0,now=context.curren
 
 export function applySource(channel,item,blocked,set,enabled=true){
   item.position.forEach((v,k)=>set(channel.panner[['positionX','positionY','positionZ'][k]],v));
-  const occlusion=item.occlusion,cutoff=occlusion?.lowpassHz??1050;
-  set(channel.input.gain,enabled&&item.enabled!==false?item.gain:0);set(channel.gain.gain,blocked?(occlusion?.directGain??.24):1);set(channel.filter.frequency,blocked?cutoff:19000);
-  set(channel.sendFilter.frequency,blocked&&occlusion?cutoff:19000);
-  // The diffuse return uses a gentler distance falloff than the direct path.
-  set(channel.send.gain,(item.reverbSend??1)*item.refDistance/(item.refDistance+.3*item.distance)*(blocked?(occlusion?.reflectionGain??.55):1));channel.blocked=blocked;
+  const settings=sourceMixSettings(item,blocked,enabled);
+  set(channel.input.gain,settings.sourceGain);set(channel.gain.gain,settings.occlusionGain);set(channel.filter.frequency,settings.directLowpassHz);
+  set(channel.sendFilter.frequency,settings.reflectionLowpassHz);
+  set(channel.send.gain,settings.reflectionSendGain);channel.blocked=blocked;
 }

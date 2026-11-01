@@ -3,9 +3,11 @@ import {EpisodeScene} from './scene.mjs';
 import {EpisodeAudio} from './audio.mjs';
 import {applySource,audioAssets,createReflectionBus,createSourceChannel,roomMix,scheduleSource} from './acoustics.mjs';
 import {CAMERA_COLOR,sourceStyle,timelineRows,cameraWaypoints} from './presentation.mjs';
+import {ParameterInspector} from './parameter-inspector.mjs';
 
 const $=id=>document.getElementById(id),icon=(id,name)=>{$(id).innerHTML=`<i data-lucide="${name}"></i>`;window.lucide.createIcons();};
 const scene=new EpisodeScene($('ego'),$('map'),text=>$('load-state').textContent=text),audio=new EpisodeAudio();
+const parameters=new ParameterInspector($('sound-parameters'));
 let id=new URLSearchParams(location.search).get('scene')==='outdoor'?'outdoor':'indoor',time=0,playing=false,last=performance.now(),switching=false;
 let uiStamp=-1;
 function download(blob,filename){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);}
@@ -27,6 +29,7 @@ function renderTimeline(){
   $('map-waypoint-label').textContent=`Camera path points (C0-C${cameraWaypoints(e.camera).length-1})`;$('map-waypoints').checked=scene.showCameraWaypoints;
   $('source-readouts').innerHTML=`<table><thead><tr><th>Source</th><th>Distance</th><th>Azimuth</th><th>Elevation</th><th class="path-state">Path / state</th><th>Solo</th></tr></thead><tbody>${e.sources.map(s=>{const style=sourceStyle(s,id);return `<tr id="read-${s.id}" style="--source-color:${style.color}"><th><span class="source-swatch"></span><span class="identifier">${s.id}</span>${style.name}</th><td data-value="distance"></td><td data-value="azimuth"></td><td data-value="elevation"></td><td class="path-state" data-value="state"></td><td><button class="icon solo" data-solo="${s.id}" title="Solo ${style.name}" aria-label="Solo ${style.name}" aria-pressed="false"><i data-lucide="headphones"></i></button></td></tr>`;}).join('')}</tbody></table>`;
   $('source-readouts').querySelectorAll('[data-solo]').forEach(button=>button.onclick=async()=>{audio.solo=audio.solo===button.dataset.solo?null:button.dataset.solo;if(playing)await audio.start(getState(id,time),scene);renderUI(getState(id,time));});
+  parameters.setEpisode(e);
   $('reverb').disabled=!e.reverb;$('wet').disabled=!e.reverb;$('reverb').checked=audio.reverb;window.lucide.createIcons();
   for(const b of document.querySelectorAll('[data-scene]'))b.classList.toggle('selected',b.dataset.scene===id);
 }
@@ -38,7 +41,9 @@ function renderUI(state){
   document.querySelectorAll('[data-event]').forEach(x=>x.classList.toggle('active',x.dataset.event===state.event.id));
   $('listener-pose').textContent=`Camera [${state.camera.position.map(v=>v.toFixed(2)).join(', ')}] m · yaw ${(Math.atan2(state.camera.forward[0],-state.camera.forward[2])*180/Math.PI).toFixed(0)}°`;
   $('reverb-label').textContent=EPISODES[id].reverb?(audio.reverb?`${roomMix(state)[0]>.5?'Bedroom · target 0.50 s':'Living room · target 0.75 s'} (assumed)`:'Room reflections off'):'Open air · no room reverb';
-  state.sources.forEach(s=>{const row=$('read-'+s.id),blocked=scene.obstruction(s.position,state.camera.position),values={distance:s.distance.toFixed(2)+' m',azimuth:(s.azimuth>=0?'+':'')+s.azimuth.toFixed(1)+'°',elevation:(s.elevation>=0?'+':'')+s.elevation.toFixed(1)+'°',state:s.enabled?`${s.active?'Active':'Silent'} · ${blocked?'Occluded':'Clear'}`:'Disabled'};for(const [key,value] of Object.entries(values))row.querySelector(`[data-value="${key}"]`).textContent=value;row.classList.toggle('active',s.active);row.querySelector('button').disabled=!s.enabled;row.querySelector('button').setAttribute('aria-pressed',audio.solo===s.id);});
+  const obstructions={};
+  state.sources.forEach(s=>{const row=$('read-'+s.id),blocked=scene.obstruction(s.position,state.camera.position);obstructions[s.id]=blocked;const values={distance:s.distance.toFixed(2)+' m',azimuth:(s.azimuth>=0?'+':'')+s.azimuth.toFixed(1)+'°',elevation:(s.elevation>=0?'+':'')+s.elevation.toFixed(1)+'°',state:s.enabled?`${s.active?'Active':'Silent'} · ${blocked?'Occluded':'Clear'}`:'Disabled'};for(const [key,value] of Object.entries(values))row.querySelector(`[data-value="${key}"]`).textContent=value;row.classList.toggle('active',s.active);row.querySelector('button').disabled=!s.enabled;row.querySelector('button').setAttribute('aria-pressed',audio.solo===s.id);});
+  parameters.update(state,obstructions,{reverb:audio.reverb,wet:audio.wet,solo:audio.solo});
 }
 async function selectScene(next){
   if(switching)return;switching=true;playing=false;audio.stop();icon('play','play');id=next;time=0;uiStamp=-1;window.episodesDemo.ready=false;renderTimeline();$('load-state').classList.remove('error');
@@ -86,6 +91,9 @@ async function exportEpisode(){
     zip.file('camera.csv','time,x,y,z,forward_x,forward_y,forward_z,speed_m_s\n'+ann.frames.map(f=>[f.time,...f.camera.position,...f.camera.forward,f.camera.speed].join(',')).join('\n'));
     zip.file('sources.csv','time,id,x,y,z,speed_m_s,distance_m,azimuth_deg,elevation_deg,right_m,up_m,forward_m,active\n'+ann.frames.flatMap(f=>f.sources.map(s=>[f.time,s.id,...s.position,s.speed,s.distance,s.azimuthDeg,s.elevationDeg,...s.relativePosition,s.active].join(','))).join('\n'));
     zip.file('audio-settings.json',JSON.stringify({reverb:audio.reverb,wet:audio.wet,rooms:e.reverb||[],solo:'Audition only; exports include all selected sources'},null,2));
+    await parameters.metadataReady;
+    renderUI(getState(id,time));
+    zip.file('sound-parameters.json',JSON.stringify(parameters.getSnapshot({solo:null}),null,2));
     for(const [name,url] of [['SOURCES.json','./SOURCES.json'],['acoustics-metadata.json','./assets/audio/acoustics-metadata.json'],['footstep-manifest.json','./assets/audio/footsteps/manifest.json']])zip.file(name,await (await fetch(url)).text());
     if(id==='indoor')zip.file('music-box-metadata.json',await (await fetch('./assets/audio/music-box-metadata.json')).text());
     zip.file('living-assets.json',await (await fetch('./assets/living/manifest.json')).text());
@@ -105,7 +113,8 @@ async function showSources(){
   $('source-details').innerHTML='<p class="limitation">Local noncommercial prototype, not a physically validated dataset. The door uses actual VLNVerse geometry; music and speech use AID and EARS. The house and outdoor scenery remain RoboMaker and Poly Haven, not VLNVerse and Infinigen full-scene imports. The additional Rocketbox human uses a virtual voice pairing without lip sync. Door motion is an authored hand-contact animation, not a trained interaction policy.</p>'+sources.resources.map(s=>`<article><h3>${s.name}</h3><span class="license">${s.license}</span><p>${s.use}<br><a href="${s.source}" target="_blank" rel="noopener">Original source</a></p></article>`).join('');$('source-dialog').showModal();
 }
 $('play').onclick=togglePlay;$('restart').onclick=()=>seek(0);$('seek').oninput=e=>seek(Number(e.target.value));$('mute').onclick=()=>{audio.setMute(!audio.muted);icon('mute',audio.muted?'volume-x':'volume-2');$('mute').title=$('mute').ariaLabel=audio.muted?'Unmute':'Mute';};
-$('reverb').onchange=e=>{audio.reverb=e.target.checked;renderUI(getState(id,time));};$('wet').oninput=e=>{audio.wet=Number(e.target.value);$('wet-value').textContent=Math.round(audio.wet*100)+'%';};
+$('reverb').onchange=e=>{audio.reverb=e.target.checked;renderUI(getState(id,time));};$('wet').oninput=e=>{audio.wet=Number(e.target.value);$('wet-value').textContent=Math.round(audio.wet*100)+'%';renderUI(getState(id,time));};
+$('parameter-export').onclick=async()=>{await parameters.metadataReady;if(!scene.ready)return;renderUI(getState(id,time));download(textFile(JSON.stringify(parameters.snapshot,null,2)),`soundworld4d-${id}-sound-parameters.json`);};
 $('sources-btn').onclick=showSources;$('close-dialog').onclick=()=>$('source-dialog').close();$('export-btn').onclick=exportEpisode;
 $('overview-export').onclick=()=>download(new Blob([Uint8Array.from(atob(scene.overviewPng().split(',')[1]),c=>c.charCodeAt(0))],{type:'image/png'}),`${id}-trajectory-overview.png`);
 $('render-quality').value=scene.quality;

@@ -99,6 +99,11 @@ export class EpisodeScene{
       if(/HouseWall|RoomWall/.test(item.id))group.traverse(n=>{if(n.isMesh)this.occluders.push(n);});
     }
     this.world.updateMatrixWorld(true);
+    // The single-leaf replacement leaves part of the original wide doorway open.
+    const shell=this.occluders.find(mesh=>mesh.name==='aws_HouseWallB_01_visual');
+    const wallMaterial=Array.isArray(shell.material)?shell.material[0]:shell.material;
+    const infill=box(this.world,[.2,2.24,3.735],[-2.6,1.12,1.8925],wallMaterial);
+    infill.name='Bedroom_Doorway_Infill';this.occluders.push(infill);
     const music=new T.Group();music.position.set(1.51,.47,1.73);this.world.add(music);this.musicBox=music;
     const wood=flat(0x8c5d36),metal=new T.MeshStandardMaterial({color:0xd7b66c,metalness:.7,roughness:.3});
     box(music,[.42,.12,.29],[0,.01,0],wood);box(music,[.4,.035,.27],[0,.1,0],flat(0x1e343c));

@@ -51,6 +51,28 @@
         <div class="source-readouts" id="source-readouts"></div>
       </section>
       <div class="tracks" id="tracks"></div>
+      <section class="parameter-inspector" id="sound-parameters" aria-labelledby="parameter-heading">
+        <div class="parameter-heading">
+          <h2 id="parameter-heading"><i data-lucide="layers-2"></i>Materials &amp; sound parameters</h2>
+          <div class="parameter-actions">
+            <select id="parameter-source" aria-label="Inspect sound source"></select>
+            <button id="parameter-export" class="icon" title="Download sound parameters (JSON)" aria-label="Download sound parameters (JSON)"><i data-lucide="download"></i></button>
+          </div>
+        </div>
+        <div class="parameter-grid">
+          <section><h3>Source basis <span id="parameter-material-status" class="parameter-tag"></span></h3><dl id="parameter-source-facts"></dl></section>
+          <section><h3>Received signal <span class="parameter-live">Live <time id="parameter-timestamp">0.0 s</time></span></h3><dl id="parameter-listener-facts"></dl></section>
+        </div>
+        <div class="parameter-recording"><span>Recording</span><p id="parameter-recording"></p><a id="parameter-metadata" target="_blank" rel="noopener">Source metadata</a></div>
+        <p class="parameter-scope" id="parameter-source-scope"></p>
+        <details class="parameter-environment" open>
+          <summary>Environment &amp; model assumptions</summary>
+          <div class="parameter-model"><span id="parameter-model"></span><span id="parameter-reflection-return"></span></div>
+          <div id="parameter-room-data"></div>
+          <p class="parameter-scope" id="parameter-room-scope"></p>
+          <p class="parameter-scope">Recorded source sounds, not physical sound synthesis. Mass, stiffness, friction and contact forces are not simulated. Gains and filters are audition settings, not calibrated SPL or measured wall transmission.</p>
+        </details>
+      </section>
     </section>
     <aside>
       <div class="aside-title"><h2>Event script</h2><span>32 s</span></div>

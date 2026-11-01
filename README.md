@@ -2,8 +2,9 @@
 
 Interactive indoor and outdoor audiovisual episodes with first-person playback,
 spatial audio, event timelines, source trajectories and a camera/listener map.
-This snapshot includes the latest phone-call pose, door interaction, named map
-labels and source-level audio balance.
+This snapshot includes the latest phone-call pose, door interaction and restored
+bedroom wall, named map labels, source-level audio balance, and the material and
+sound-parameter inspector with live values and JSON export.
 
 ## Run locally
 
@@ -47,6 +48,12 @@ For many files, a Git client is more convenient than repeated browser uploads.
 - `serve.mjs`, `scripts/`: optional local preview server.
 - `THIRD_PARTY_NOTICES.md`, `episodes/SOURCES.json`: resource provenance and terms.
 - `DEPLOYMENT-MANIFEST.json`: packaged-file sizes and SHA-256 checksums.
+
+The material and sound parameters appear below the event timeline. They identify
+recording-to-material assignments, animation-based emission timing, distance and
+occlusion settings, and assumed room responses. Both the parameter download and
+the episode ZIP include the current parameter report. Visual material labels and
+assumed acoustic values are distinguished from measured physical properties.
 
 ## Scope and Resource Permissions
 

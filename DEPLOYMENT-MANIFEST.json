@@ -13,8 +13,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3046,
-      "sha256": "59bb00d10e308c04134126b629e3db843b090feebbde5fb58451104f61f11f0e"
+      "bytes": 3551,
+      "sha256": "284ba5f5183b4cc7b27b38cf15e1646ac1bd780853daadf90cafc829368d3c27"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -43,13 +43,13 @@
     },
     {
       "path": "episodes/acoustics.mjs",
-      "bytes": 3956,
-      "sha256": "bb2330ca47f1b6ba0ee6658619dc170bdceb0f7ca7de93be9ce047355c122ecb"
+      "bytes": 4955,
+      "sha256": "97830885cb251831a58b36ffac89cbb1804942680b9f7b0b1a3e98a0eed3f3da"
     },
     {
       "path": "episodes/app.mjs",
-      "bytes": 17874,
-      "sha256": "01593e56b2c8fdc8c9d7a2d7eadf67647c593a0d3059684782cdb6ba729a682d"
+      "bytes": 18605,
+      "sha256": "dddd73ed32baeab478dee74d8a65a6ae939ac749c78d36460167f505c9928f76"
     },
     {
       "path": "episodes/assets/audio/EARS-LICENSE.txt",
@@ -2473,8 +2473,8 @@
     },
     {
       "path": "episodes/index.html",
-      "bytes": 5378,
-      "sha256": "306ebfd175cc4dce3b8ceb5d73ee3fc4f7e952330f8269d5feb9eb28218f4a5f"
+      "bytes": 7244,
+      "sha256": "4be0ff1fcb7527b0d240738d4af572179f941bcaff4d061b7593333f0de6eb60"
     },
     {
       "path": "episodes/living.mjs",
@@ -2485,6 +2485,11 @@
       "path": "episodes/motion.mjs",
       "bytes": 3698,
       "sha256": "617a451943c5c32c4f8fdbf9b21e062e14134e19d064c5c1aa1020f7841f289d"
+    },
+    {
+      "path": "episodes/parameter-inspector.mjs",
+      "bytes": 6016,
+      "sha256": "6ce9aa332ffdf865f90d5a9163ee28937d4dfd138c524b49336c227658018257"
     },
     {
       "path": "episodes/presentation.mjs",
@@ -2503,8 +2508,13 @@
     },
     {
       "path": "episodes/scene.mjs",
-      "bytes": 27809,
-      "sha256": "8fa6789f61125991d153af6dcc5631a1fd223cc4040ae9192c495c8e3bca96eb"
+      "bytes": 28213,
+      "sha256": "93aff07db0ab3838d7833cca653762c201b708299499ce2a55200e0777a70837"
+    },
+    {
+      "path": "episodes/sound-parameters.mjs",
+      "bytes": 7198,
+      "sha256": "5fc3068b9b50ed28d81e0a655a15808c2c4a15b2b69d2c64973600610ee42a0f"
     },
     {
       "path": "episodes/state.mjs",
@@ -2513,8 +2523,8 @@
     },
     {
       "path": "episodes/style.css",
-      "bytes": 17015,
-      "sha256": "031267d631a55f761f8f336e2d0c2fbcdb5fe51c31d584ebb0905f498186769e"
+      "bytes": 21076,
+      "sha256": "8b283ef43b7918d8d57c7ba3ec5dbf24d54f366261c65272e8c6d960b223c97b"
     },
     {
       "path": "index.html",
