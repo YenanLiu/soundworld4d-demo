@@ -4,7 +4,11 @@ Interactive indoor and outdoor audiovisual episodes with first-person playback,
 spatial audio, event timelines, source trajectories and a camera/listener map.
 This snapshot includes the latest phone-call pose, door interaction and restored
 bedroom wall, named map labels, source-level audio balance, and the material and
-sound-parameter inspector with live values and JSON export.
+sound-parameter inspector with live values and JSON export. Scene descriptions
+identify the furnished home or streamside park, with timed action, camera and
+audiovisual requirements alongside each event.
+The synopsis includes enabled environment sources, with their placement,
+listening windows and capture roles in the expandable sound-capture plan.
 
 ## Run locally
 

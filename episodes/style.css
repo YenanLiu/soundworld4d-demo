@@ -65,6 +65,27 @@ dialog .limitation{background:var(--accent-soft)}
 .map-toolbar input{margin:0;flex-shrink:0}
 .map-toolbar svg{width:14px;height:14px;color:var(--accent);flex-shrink:0}
 #map-clock{font:10px ui-monospace,monospace;white-space:nowrap}
+.sectionbar>div{min-width:0}
+.sectionbar h1{line-height:1.35;overflow-wrap:break-word}
+.scene-setting{font-size:11px;font-weight:600;color:var(--accent);line-height:1.7;margin:14px 0 0}
+.scene-setting+.story{margin-top:9px;margin-bottom:15px;line-height:1.75}
+.episode-context{margin:0 0 20px;padding:0 0 17px;border-bottom:1px solid var(--line);font-size:11px;line-height:1.75}
+.episode-context dt{font-size:10px;font-weight:650;color:var(--accent);margin-top:12px}
+.episode-context dd{margin:4px 0 0;color:var(--muted);overflow-wrap:anywhere}
+.event-heading{font-size:13px;margin:0 0 12px}
+.events p.event-condition{margin-top:7px;padding-top:6px;border-top:1px solid #e3e7f1;font-size:10px;line-height:1.65}
+.event-condition>span{display:block;font-size:9px;font-weight:650;color:var(--accent);margin-bottom:2px}
+.environment-capture{font-size:11px;line-height:1.7;border-bottom:1px solid var(--line);margin:-5px 0 20px;padding-bottom:14px}
+.environment-capture summary{font-size:11px;font-weight:600;cursor:pointer}
+#capture-source-count{font-weight:400;color:var(--muted)}
+.environment-capture ul{list-style:none;margin:12px 0 0;padding:0}
+.environment-capture li+li{border-top:1px solid var(--line);margin-top:13px;padding-top:12px}
+.environment-capture h3{font-size:11px;margin:0 0 7px;font-weight:650}
+.environment-capture h3 span{display:block;font-size:9px;font-weight:500;color:var(--accent);margin-top:2px}
+.environment-capture p{font-size:11px;line-height:1.7;color:var(--muted);margin:6px 0;overflow-wrap:anywhere}
+.environment-capture p b{font-size:9px;display:block;color:var(--accent);font-weight:600}
+.capture-window{font-size:9px;color:var(--muted);font-variant-numeric:tabular-nums;overflow-wrap:anywhere;margin-top:7px}
+@media(max-width:700px){.sectionbar{align-items:flex-start;flex-wrap:wrap;gap:8px}.sectionbar>div{flex:1 1 100%}.sectionbar .status{font-size:10px}.events{grid-template-columns:1fr;gap:7px}.events p{font-size:11px}.events p.event-condition{font-size:11px}.episode-context{font-size:11px}.scene-setting{font-size:12px}}
 
 .parameter-inspector{border-top:1px solid var(--line);margin-top:18px;padding:16px 0}
 .parameter-heading,.parameter-actions{display:flex;align-items:center;gap:10px}
@@ -93,6 +114,14 @@ dialog .limitation{background:var(--accent-soft)}
 .parameter-scope{font-size:10px;line-height:1.7;color:var(--muted);margin:9px 0 0;overflow-wrap:anywhere}
 .parameter-environment{margin-top:13px;border-top:1px solid var(--line);padding-top:11px}
 .parameter-environment summary{font-size:11px;font-weight:600;cursor:pointer;width:fit-content}
+.parameter-environment{scroll-margin-top:20px}
+.environment-grid{margin:16px 0 18px}
+.parameter-assumed{font-size:9px;font-weight:500;color:var(--muted)}
+.parameter-room-heading{display:flex;align-items:baseline;gap:8px;font-size:11px;margin:16px 0 0;font-weight:650}
+#environment-link{display:inline-flex;align-items:center;gap:5px;color:var(--accent);text-decoration:none;font-size:10px;white-space:nowrap}
+#environment-link svg{width:13px;height:13px;flex-shrink:0}
+#environment-link:hover{text-decoration:underline;text-underline-offset:3px}
+#environment-link:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 .parameter-model{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:7px;margin:12px 0 9px;font-size:10px;color:var(--muted);line-height:1.6}
 .parameter-table-wrap{overflow-x:auto}
 .parameter-table-wrap table{border-collapse:collapse;table-layout:fixed;width:100%;font-size:10px;line-height:1.5}

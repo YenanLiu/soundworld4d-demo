@@ -64,8 +64,8 @@ export function scheduleSource(context,channel,buffers,from=0,now=context.curren
 
 export function applySource(channel,item,blocked,set,enabled=true){
   item.position.forEach((v,k)=>set(channel.panner[['positionX','positionY','positionZ'][k]],v));
-  const settings=sourceMixSettings(item,blocked,enabled);
-  set(channel.input.gain,settings.sourceGain);set(channel.gain.gain,settings.occlusionGain);set(channel.filter.frequency,settings.directLowpassHz);
-  set(channel.sendFilter.frequency,settings.reflectionLowpassHz);
-  set(channel.send.gain,settings.reflectionSendGain);channel.blocked=blocked;
+  const settings=sourceMixSettings(item,blocked,enabled),transition=item.occlusion?.transitionSeconds;
+  set(channel.input.gain,settings.sourceGain);set(channel.gain.gain,settings.occlusionGain,transition);set(channel.filter.frequency,settings.directLowpassHz,transition);
+  set(channel.sendFilter.frequency,settings.reflectionLowpassHz,transition);
+  set(channel.send.gain,settings.reflectionSendGain,transition);channel.blocked=blocked;
 }

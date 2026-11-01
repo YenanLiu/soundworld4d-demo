@@ -30,7 +30,7 @@ export class EpisodeAudio{
   }
   update(state,scene,immediate=false){
     if(!this.context||!this.playing)return;const now=this.context.currentTime;
-    const set=(p,v)=>immediate?p.setValueAtTime(v,now):p.setTargetAtTime(v,now,.035);
+    const set=(p,v,transition=.035)=>immediate?p.setValueAtTime(v,now):p.setTargetAtTime(v,now,transition);
     const listener=this.context.listener;state.camera.position.forEach((x,i)=>set(listener[['positionX','positionY','positionZ'][i]],x));
     state.camera.forward.forEach((x,i)=>set(listener[['forwardX','forwardY','forwardZ'][i]],x));
     set(listener.upX,0);set(listener.upY,1);set(listener.upZ,0);

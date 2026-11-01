@@ -2,7 +2,7 @@ import {EPISODES,getState,annotations} from './state.mjs';
 import {EpisodeScene} from './scene.mjs';
 import {EpisodeAudio} from './audio.mjs';
 import {applySource,audioAssets,createReflectionBus,createSourceChannel,roomMix,scheduleSource} from './acoustics.mjs';
-import {CAMERA_COLOR,sourceStyle,timelineRows,cameraWaypoints} from './presentation.mjs';
+import {CAMERA_COLOR,sourceStyle,timelineRows,cameraWaypoints,ambientSounds,ambientSources,episodeSynopsis,captureWindowLabel} from './presentation.mjs';
 import {ParameterInspector} from './parameter-inspector.mjs';
 
 const $=id=>document.getElementById(id),icon=(id,name)=>{$(id).innerHTML=`<i data-lucide="${name}"></i>`;window.lucide.createIcons();};
@@ -12,10 +12,20 @@ let id=new URLSearchParams(location.search).get('scene')==='outdoor'?'outdoor':'
 let uiStamp=-1;
 function download(blob,filename){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);}
 function textFile(text){return new Blob([text],{type:'text/plain;charset=utf-8'});}
-function episodeStory(e){return `# ${e.title}\n\n${e.story}\n\n## Scene and coordinates\n\n${e.sourceLabel}\nMetres, Y up, X/Z ground plane. Listener height: 1.65 m.\n\n## Event timeline\n\n`+e.events.map(x=>`${x.start}-${x.end} s | ${x.title}\n${x.detail}\nDependencies: ${x.dependsOn.join(', ')||'none'}\n`).join('\n')+`\n## Sources\n\n`+e.sources.map(s=>`${s.id} ${s.label}: ${s.kind}; activity ${JSON.stringify(s.activity)}\nRecording: ${s.recording}\nPairing: ${s.pairing}\n`).join('\n')+`\n## Limitations\n\n${JSON.stringify(e.environment,null,2)}\n`;}
+function episodeStory(e){
+  return `# ${e.title}\n\n${episodeSynopsis(e)}\n\n## Setting\n\n${e.setting}\n\n## Camera / listener plan\n\n${e.recordingPlan}\n\nBackground sounds: ${ambientSounds(e).join('; ')}.\n\n## Environment sound capture\n\n`+
+    ambientSources(e).map(source=>`### ${source.name}\n\nPosition: ${source.placement}\nRole: ${source.role}\nListening window: ${captureWindowLabel(source.captureWindows)}\nCapture plan: ${source.capturePlan}\n`).join('\n')+
+    `\n## Scene and coordinates\n\n${e.sourceLabel}\nMetres, Y up, X/Z ground plane. Listener height: 1.65 m.\n\n## Event timeline\n\n`+
+    e.events.map(x=>`${x.start}-${x.end} s | ${x.title}\n${x.detail}\nCamera: ${x.recording}\nAV target: ${x.expected}\nDependencies: ${x.dependsOn.join(', ')||'none'}\n`).join('\n')+
+    `\n## Sources\n\n`+e.sources.map(s=>`${s.id} ${s.label}: ${s.kind}; activity ${JSON.stringify(s.activity)}\nRecording: ${s.recording}\nPairing: ${s.pairing}\n`).join('\n')+
+    `\n## Limitations\n\n${JSON.stringify(e.environment,null,2)}\n`;
+}
 function renderTimeline(){
-  const e=EPISODES[id];$('scene-kind').textContent=id==='indoor'?'INDOOR / 01':'OUTDOOR / 02';$('scene-title').textContent=e.title;$('story').textContent=e.story;$('scene-source').textContent=e.sourceLabel;
-  $('events').innerHTML=e.events.map(x=>`<li data-event="${x.id}"><button data-time="${x.start}" title="Seek to ${x.start} seconds"><span class="event-time">${String(x.start).padStart(2,'0')}-${String(x.end).padStart(2,'0')} s</span><strong>${x.title}</strong><p>${x.detail}</p></button></li>`).join('');
+  const e=EPISODES[id];$('scene-kind').textContent=`${id.toUpperCase()} / ${e.settingLabel}`;$('scene-title').textContent=e.title;$('story').textContent=episodeSynopsis(e);$('scene-source').textContent=e.sourceLabel;
+  $('scene-setting').textContent=e.setting;$('recording-plan').textContent=e.recordingPlan;
+  const ambience=ambientSources(e);$('capture-source-count').textContent=`(${ambience.length})`;
+  $('environment-capture').innerHTML=ambience.map(source=>`<li data-capture-source="${source.sourceId}"><h3>${source.name}<span>${source.role}</span></h3><p><b>Where</b>${source.placement}</p><p><b>Record</b>${source.capturePlan}</p><div class="capture-window">Listening window: ${captureWindowLabel(source.captureWindows)}</div></li>`).join('');
+  $('events').innerHTML=e.events.map(x=>`<li data-event="${x.id}"><button data-time="${x.start}" title="Seek to ${x.start} seconds"><span class="event-time">${String(x.start).padStart(2,'0')}-${String(x.end).padStart(2,'0')} s</span><strong>${x.title}</strong><p>${x.detail}</p><p class="event-condition"><span>Camera / listener</span>${x.recording}</p><p class="event-condition"><span>AV target</span>${x.expected}</p></button></li>`).join('');
   $('events').querySelectorAll('button').forEach(button=>button.onclick=()=>seek(Number(button.dataset.time)));
   const rows=timelineRows(e);
   $('tracks').innerHTML=['motion','audio'].map(mode=>`<div class="track-section"><strong>${mode==='motion'?'Motion':'Audio'}</strong><div class="track-axis">${[0,8,16,24,32].map(t=>`<span>${t} s</span>`).join('')}</div></div>`+rows.filter(row=>row.mode===mode).map(row=>`<div class="track ${mode}" data-track="${row.id}" style="--track-color:${row.color}"><span class="track-label"><i data-lucide="${row.icon}"></i><span>${row.label}</span></span><div class="track-rail" aria-label="${row.label}">${row.windows.map(([a,b])=>`<span class="track-block" style="left:${a/e.duration*100}%;width:${(b-a)/e.duration*100}%"></span>`).join('')}<b class="track-playhead"></b></div></div>`).join('')).join('');
@@ -78,7 +88,10 @@ async function renderAudio(selected,options={}){
   for(let t=0;t<=32.001;t+=.05){const s=getState(id,Math.min(32,t));for(let i=0;i<3;i++){listener['position'+axes[i]].linearRampToValueAtTime(s.camera.position[i],t);listener['forward'+axes[i]].linearRampToValueAtTime(s.camera.forward[i],t);}listener.upY.setValueAtTime(1,t);roomMix(s).forEach((w,i)=>reflections.rooms[i]?.gain.gain.linearRampToValueAtTime(w,t));}
   for(const index of selected){
     const source=e.sources[index],channel=createSourceChannel(ctx,source,reflections,master);
-    for(let t=0;t<=32.001;t+=.05){const s=getState(id,Math.min(32,t)),item=s.sources[index];scene.setEnvironment(s);applySource(channel,item,scene.obstruction(item.position,s.camera.position),(p,v)=>p.linearRampToValueAtTime(v,t));}
+    for(let t=0;t<=32.001;t+=.05){const s=getState(id,Math.min(32,t)),item=s.sources[index];scene.setEnvironment(s);applySource(channel,item,scene.obstruction(item.position,s.camera.position),(p,v,transition)=>{
+      if(transition!==undefined){if(t===0)p.setValueAtTime(v,0);else p.setTargetAtTime(v,t,transition);}
+      else p.linearRampToValueAtTime(v,t);
+    });}
     scheduleSource(ctx,channel,buffers);
   }
   scene.update(getState(id,time));return encodeWav(await ctx.startRendering());
@@ -114,6 +127,7 @@ async function showSources(){
 }
 $('play').onclick=togglePlay;$('restart').onclick=()=>seek(0);$('seek').oninput=e=>seek(Number(e.target.value));$('mute').onclick=()=>{audio.setMute(!audio.muted);icon('mute',audio.muted?'volume-x':'volume-2');$('mute').title=$('mute').ariaLabel=audio.muted?'Unmute':'Mute';};
 $('reverb').onchange=e=>{audio.reverb=e.target.checked;renderUI(getState(id,time));};$('wet').oninput=e=>{audio.wet=Number(e.target.value);$('wet-value').textContent=Math.round(audio.wet*100)+'%';renderUI(getState(id,time));};
+$('environment-link').onclick=()=>{$('environment-parameters').open=true;};
 $('parameter-export').onclick=async()=>{await parameters.metadataReady;if(!scene.ready)return;renderUI(getState(id,time));download(textFile(JSON.stringify(parameters.snapshot,null,2)),`soundworld4d-${id}-sound-parameters.json`);};
 $('sources-btn').onclick=showSources;$('close-dialog').onclick=()=>$('source-dialog').close();$('export-btn').onclick=exportEpisode;
 $('overview-export').onclick=()=>download(new Blob([Uint8Array.from(atob(scene.overviewPng().split(',')[1]),c=>c.charCodeAt(0))],{type:'image/png'}),`${id}-trajectory-overview.png`);

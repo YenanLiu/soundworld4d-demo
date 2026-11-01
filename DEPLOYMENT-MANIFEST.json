@@ -13,8 +13,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3551,
-      "sha256": "284ba5f5183b4cc7b27b38cf15e1646ac1bd780853daadf90cafc829368d3c27"
+      "bytes": 3842,
+      "sha256": "15dcb922ef081176b5320f5a3fbc6f02e65b2e1bf3a49220b4a98b9cf172f5eb"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -33,8 +33,8 @@
     },
     {
       "path": "episodes/README.md",
-      "bytes": 19696,
-      "sha256": "a38fe5163a135d67d2646b2155658cdeb52e832b819b74ecff9c6bf5fad4cd46"
+      "bytes": 20388,
+      "sha256": "38ec8c2454668f32a97c4b7e551db0d5c7943661d66660f68d589cd666b7f609"
     },
     {
       "path": "episodes/SOURCES.json",
@@ -43,13 +43,13 @@
     },
     {
       "path": "episodes/acoustics.mjs",
-      "bytes": 4955,
-      "sha256": "97830885cb251831a58b36ffac89cbb1804942680b9f7b0b1a3e98a0eed3f3da"
+      "bytes": 5044,
+      "sha256": "5c043c512b7a158a5d388f085d46a65832ba185ca84b78239a86b89fa9db02be"
     },
     {
       "path": "episodes/app.mjs",
-      "bytes": 18605,
-      "sha256": "dddd73ed32baeab478dee74d8a65a6ae939ac749c78d36460167f505c9928f76"
+      "bytes": 20051,
+      "sha256": "99756e62e6a3913597d931d08d693be538a120c1ef30da988049bf0bf0d79b13"
     },
     {
       "path": "episodes/assets/audio/EARS-LICENSE.txt",
@@ -2458,8 +2458,8 @@
     },
     {
       "path": "episodes/audio.mjs",
-      "bytes": 3436,
-      "sha256": "cb32b584a7343f64b952fe391a775ac6188464f7556ff4dcde35f828211ef79a"
+      "bytes": 3458,
+      "sha256": "55ac31ca01ea895d4218db2273b0be3874127d3c19bc155a4cfa29297dea46c6"
     },
     {
       "path": "episodes/dog-gait.mjs",
@@ -2473,8 +2473,8 @@
     },
     {
       "path": "episodes/index.html",
-      "bytes": 7244,
-      "sha256": "4be0ff1fcb7527b0d240738d4af572179f941bcaff4d061b7593333f0de6eb60"
+      "bytes": 8491,
+      "sha256": "c263d3b031ca79821cabbd15d9da141f8079bf59502b901a1b1180b519cce915"
     },
     {
       "path": "episodes/living.mjs",
@@ -2488,13 +2488,13 @@
     },
     {
       "path": "episodes/parameter-inspector.mjs",
-      "bytes": 6016,
-      "sha256": "6ce9aa332ffdf865f90d5a9163ee28937d4dfd138c524b49336c227658018257"
+      "bytes": 7970,
+      "sha256": "374620af59d9e3474551737a41070756672aec81f4b3d510969da1950b9bc330"
     },
     {
       "path": "episodes/presentation.mjs",
-      "bytes": 3078,
-      "sha256": "accce14641168076796873c89c040a7f080135f061f4993204d5a0cdb0b232e2"
+      "bytes": 3738,
+      "sha256": "da92129a35ef293de02909c7c8ccb73e3f717dc07ebd9972ffbf902b8bb462ec"
     },
     {
       "path": "episodes/render-quality.mjs",
@@ -2513,18 +2513,18 @@
     },
     {
       "path": "episodes/sound-parameters.mjs",
-      "bytes": 7198,
-      "sha256": "5fc3068b9b50ed28d81e0a655a15808c2c4a15b2b69d2c64973600610ee42a0f"
+      "bytes": 8520,
+      "sha256": "3b73abb8ed5517c7e9fe1480808b94938eefd573a1f28cdbda4a66fafb8a1fc1"
     },
     {
       "path": "episodes/state.mjs",
-      "bytes": 22907,
-      "sha256": "5b55876e85870a68695237ebe2508469e0894001b96062630152846424063237"
+      "bytes": 28330,
+      "sha256": "304f588fea3acc63fd018fac6babbf32dbf76f7d3b2ea453d38726ec3e5ae72a"
     },
     {
       "path": "episodes/style.css",
-      "bytes": 21076,
-      "sha256": "8b283ef43b7918d8d57c7ba3ec5dbf24d54f366261c65272e8c6d960b223c97b"
+      "bytes": 23766,
+      "sha256": "ef19ecaa36f65a359f4367bf8f2e3e66f75bcdd31f763631bc11328fd4d74fef"
     },
     {
       "path": "index.html",

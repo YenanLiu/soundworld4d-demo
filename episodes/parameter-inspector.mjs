@@ -51,13 +51,30 @@ export class ParameterInspector{
       query('#parameter-source-scope').textContent=basis.limitation;
       const model=snapshot.model;
       query('#parameter-model').textContent=`${model.panningModel} / ${model.distanceModel} distance / rolloff ${model.rolloffFactor} / gain = refDistance / max(distance, refDistance)`;
+      const environment=snapshot.environment,atmosphere=environment.atmosphere;
+      query('#parameter-environment-facts').innerHTML=facts([
+        ['Environment',environment.enclosure+' / '+environment.settingLabel.toLowerCase()],
+        ['Surface acoustics',environment.surfaceAcoustics],
+        ['Reflections / reverb',environment.reflectionModel],
+        ['Early reflections',environment.earlyReflections],
+      ])+'<dt>Listener IR zone</dt><dd id="parameter-listener-zone"></dd>'+
+        (environment.door?'<dt>Bedroom door</dt><dd id="parameter-door-state"></dd>':'');
+      query('#parameter-atmosphere-facts').innerHTML=facts([
+        ['Temperature',`${number(atmosphere.temperatureCelsius,1)} \u00b0C`],
+        ['Relative humidity',`${number(atmosphere.relativeHumidityPercent,0)}%`],
+        ['Air pressure',`${number(atmosphere.pressureKilopascals,3)} kPa`],
+        ['Air absorption','Not simulated'],['Wind / weather','Not simulated'],
+      ]);
+      query('#parameter-atmosphere-scope').textContent='Demo defaults, not measurements or documented IR-generation settings. These values do not change the rendered audio.';
+      query('#parameter-room-heading').innerHTML=snapshot.reflections.rooms.length?
+        'Room responses <span class="parameter-assumed">Assumed</span>':'Outdoor response';
       query('#parameter-room-data').innerHTML=snapshot.reflections.rooms.length?
         '<div class="parameter-table-wrap"><table><thead><tr><th>Room (assumed)</th><th>Dimensions (m)</th><th>Absorption</th><th>T60 target / IR estimate (s)</th><th>Listener-zone mix</th></tr></thead><tbody>'+snapshot.reflections.rooms.map((room,i)=>
           `<tr><th>${escape(room.name)}</th><td>${room.dimensionsMeters?room.dimensionsMeters.map(n=>number(n,1)).join(' x '):'Unavailable'}</td><td>${number(room.assumedAbsorption,3)}</td><td>${number(room.targetT60Seconds)} / ${number(room.estimatedIRT60Seconds)}</td><td id="parameter-room-${i}"></td></tr>`).join('')+'</tbody></table></div>':
         '<p class="parameter-open-air">Open air. No room-convolution response or assumed room absorption.</p>';
       query('#parameter-room-scope').textContent=snapshot.reflections.rooms.length?
-        'Fixed pyroomacoustics shoebox responses, crossfaded by listener zone. Dimensions and absorption are assumptions, not measurements of this house. Absorption is room-wide, not assigned to individual wall materials.':
-        'The stream is a point emitter. Weather, terrain diffraction and distributed water flow are not simulated.';
+        'Fixed pyroomacoustics shoebox responses, crossfaded by listener zone. Room dimensions and absorption are assumptions, not house measurements. Door motion changes raycast obstruction and source filters, not the fixed reflection paths.':
+        'No added ground reflections, echoes, diffraction or room reverberation. Source recordings may retain their original environmental cues. The stream is one point emitter, not distributed water flow.';
       this.staticKey=key;
     }
     query('#parameter-activity').textContent=!source.enabled?'Disabled':source.active?'Active':'Silent';
@@ -69,6 +86,12 @@ export class ParameterInspector{
     query('#parameter-send').textContent=snapshot.reflections.enabled?number(source.mix.reflectionSendGain,3):'Off';
     query('#parameter-send-lowpass').textContent=snapshot.reflections.enabled?`${number(source.mix.reflectionLowpassHz,0)} Hz`:'Off';
     query('#parameter-reflection-return').textContent=`Room reflection return: ${snapshot.reflections.enabled?number(snapshot.reflections.returnGain):'off'}`;
+    query('#parameter-environment-status').textContent=snapshot.reflections.rooms.length?(snapshot.reflections.enabled?'Room IRs on':'Room IRs off'):'Open air';
+    query('#parameter-listener-zone').textContent=snapshot.environment.listenerZone+(snapshot.reflections.rooms.length?' (assumed)':'');
+    if(snapshot.environment.door){
+      const door=snapshot.environment.door;
+      query('#parameter-door-state').textContent=`${door.phase[0].toUpperCase()+door.phase.slice(1)} / ${number(door.angleDegrees,1)} deg`;
+    }
     snapshot.reflections.rooms.forEach((room,i)=>{query(`#parameter-room-${i}`).textContent=`${number(room.mixWeight*100,0)}%`;});
     query('#parameter-timestamp').textContent=`${number(snapshot.timeSeconds,1)} s`;
     this.element.setAttribute('aria-busy','false');

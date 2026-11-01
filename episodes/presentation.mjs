@@ -1,5 +1,14 @@
 export const CAMERA_COLOR='#167fa5';
 export const PERSON_COLOR='#c65083';
+export function ambientSources(episode){
+  return episode.ambience.filter(item=>{
+    const source=episode.sources.find(source=>source.id===item.sourceId);
+    return source&&source.enabled!==false;
+  }).map(item=>({...item,name:episode.sources.find(source=>source.id===item.sourceId).label}));
+}
+export function ambientSounds(episode){return ambientSources(episode).map(item=>item.description);}
+export function episodeSynopsis(episode){return [...ambientSources(episode).map(item=>item.story),episode.story].join(' ');}
+export function captureWindowLabel(windows){return windows.map(([a,b])=>`${Number(a.toFixed(2))}-${Number(b.toFixed(2))} s`).join('; ');}
 const styles={
   S2:{name:'Person / Speech',mapName:'Person',color:PERSON_COLOR,icon:'speech'},
   FP:{name:'Person / Steps',mapName:'Person steps',color:'#d47b49',icon:'footprints'},

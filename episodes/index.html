@@ -25,7 +25,7 @@
   </header>
   <main>
     <section class="workspace">
-      <div class="sectionbar"><div><span class="eyebrow" id="scene-kind">INDOOR / 01</span><h1 id="scene-title">A visitor opens and closes the door</h1></div><span class="status" id="load-state">Loading assets...</span></div>
+      <div class="sectionbar"><div><span class="eyebrow" id="scene-kind">INDOOR / BEDROOM &amp; LIVING ROOM</span><h1 id="scene-title">A woman opens a bedroom door and takes a phone call</h1></div><span class="status" id="load-state">Loading assets...</span></div>
       <div class="views">
         <div class="view primary">
           <div class="canvas-wrap" id="ego-wrap"><canvas id="ego"></canvas><div class="view-label">First person / listener</div><span class="timebadge" id="timebadge">00.0 s</span><div class="view-tools"><select id="render-quality" aria-label="Render quality" title="Render quality"><option value="balanced">Standard</option><option value="high" selected>High</option><option value="ultra">Ultra</option></select><button id="frame-export" class="icon" title="Save PNG (3840 px long edge)" aria-label="Save PNG (3840 px long edge)"><i data-lucide="camera"></i></button><button id="view-fullscreen" class="icon" title="Full screen" aria-label="Full screen"><i data-lucide="maximize"></i></button></div></div>
@@ -47,7 +47,7 @@
       <div id="source-options" class="source-options" role="group" aria-label="Additional sources"></div>
       <section class="telemetry" aria-label="Live source and listener telemetry">
         <div class="telemetry-heading"><h2>Source / listener telemetry</h2><span id="listener-pose"></span></div>
-        <div class="acoustic-controls"><label><input id="reverb" type="checkbox" checked>Room reflections</label><input id="wet" type="range" min="0" max="1.2" step=".05" value=".55" aria-label="Reflection return level"><output id="wet-value">55%</output><span id="reverb-label"></span></div>
+        <div class="acoustic-controls"><label><input id="reverb" type="checkbox" checked>Room reflections</label><input id="wet" type="range" min="0" max="1.2" step=".05" value=".55" aria-label="Reflection return level"><output id="wet-value">55%</output><span id="reverb-label"></span><a id="environment-link" href="#environment-parameters" title="Environment &amp; acoustics"><i data-lucide="thermometer"></i>Environment</a></div>
         <div class="source-readouts" id="source-readouts"></div>
       </section>
       <div class="tracks" id="tracks"></div>
@@ -65,8 +65,13 @@
         </div>
         <div class="parameter-recording"><span>Recording</span><p id="parameter-recording"></p><a id="parameter-metadata" target="_blank" rel="noopener">Source metadata</a></div>
         <p class="parameter-scope" id="parameter-source-scope"></p>
-        <details class="parameter-environment" open>
-          <summary>Environment &amp; model assumptions</summary>
+        <details class="parameter-environment" id="environment-parameters" open>
+          <summary>Environment &amp; acoustics</summary>
+          <div class="parameter-grid environment-grid">
+            <section><h3>Space &amp; propagation <span id="parameter-environment-status" class="parameter-tag"></span></h3><dl id="parameter-environment-facts"></dl></section>
+            <section><h3>Atmosphere <span class="parameter-assumed">Assumed / metadata only</span></h3><dl id="parameter-atmosphere-facts"></dl><p class="parameter-scope" id="parameter-atmosphere-scope"></p></section>
+          </div>
+          <h3 class="parameter-room-heading" id="parameter-room-heading">Room responses <span class="parameter-assumed">Assumed</span></h3>
           <div class="parameter-model"><span id="parameter-model"></span><span id="parameter-reflection-return"></span></div>
           <div id="parameter-room-data"></div>
           <p class="parameter-scope" id="parameter-room-scope"></p>
@@ -75,8 +80,17 @@
       </section>
     </section>
     <aside>
-      <div class="aside-title"><h2>Event script</h2><span>32 s</span></div>
+      <div class="aside-title"><h2>Scene &amp; story</h2><span>32 s</span></div>
+      <p class="scene-setting" id="scene-setting"></p>
       <p class="story" id="story"></p>
+      <dl class="episode-context">
+        <dt>Camera / listener plan</dt><dd id="recording-plan"></dd>
+      </dl>
+      <details class="environment-capture">
+        <summary>Sound placement &amp; capture <span id="capture-source-count"></span></summary>
+        <ul id="environment-capture"></ul>
+      </details>
+      <h2 class="event-heading">Event &amp; recording plan</h2>
       <ol class="events" id="events"></ol>
       <div class="technical-note"><i data-lucide="headphones"></i><span>HRTF / occlusion proxy / assumed room reflections<br>Not a validated physical acoustic simulation</span></div>
     </aside>

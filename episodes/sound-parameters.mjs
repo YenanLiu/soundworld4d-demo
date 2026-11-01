@@ -38,7 +38,7 @@ export function sourceSoundBasis(episode,source){
   };
   if(source.id==='S1'&&episode.id==='indoor')return {
     material:'Wood body / metal mechanism',materialStatus:'Visual only',input:'Recorded AID music-box loop',
-    trigger:'Continuous playback, 0-32 s',parameter:'Filtered and dynamically balanced recording',
+    trigger:'Continuous playback, 0-32 s',parameter:`${(source.fadeIn??.12).toFixed(2)} s fade-in; ${(source.occlusion?.transitionSeconds??.035).toFixed(2)} s occlusion time constant`,
     limitation:'No physical melody synthesis or material-to-timbre calculation. Level is an audition setting, not calibrated sound power.',
     metadata:'./assets/audio/music-box-metadata.json',
   };
@@ -74,6 +74,19 @@ export function soundParameterSnapshot(episode,state,blocked,metadata,options={}
       occlusion:'Binary source-listener raycast against scene walls and door geometry'},
     listener:{positionMeters:state.camera.position,forward:state.camera.forward},
     audition:{soloSourceId:options.solo??null},
+    environment:{setting:episode.setting,settingLabel:episode.settingLabel,
+      enclosure:indoor?'Enclosed rooms':'Open air',
+      atmosphere:{...episode.environment.atmosphere},
+      listenerZone:indoor?(weights[0]>=weights[1]?'Bedroom':'Living room'):'Open air',
+      listenerZoneBasis:indoor?'Authored position-based IR crossfade, not mesh room detection':'Outdoor scene',
+      door:state.door?{id:state.door.id,phase:state.door.phase,angleDegrees:state.door.angle*180/Math.PI}:null,
+      reflectionModel:indoor?'Fixed stereo shoebox IRs':'No added environmental reflections',
+      earlyReflections:indoor?'Baked into fixed IRs; not updated from scene geometry':'Not simulated',
+      reverberation:indoor?'Fixed room IRs crossfaded by listener zone':'No added room reverberation',
+      surfaceAcoustics:indoor?'Assumed room-average absorption, not per-surface coefficients':'Ground and surface reflections not simulated',
+      doorAffects:indoor?'Raycast obstruction and source filters, not fixed room IRs':null,
+      airAbsorptionSimulated:false,weatherSimulated:false,diffractionSimulated:false,
+      distancePropagationDelaySimulated:false},
     reflections:{enabled:reflectionsEnabled,returnGain:reflectionsEnabled?(options.wet??.55):0,
       rooms:(episode.reverb||[]).map((room,i)=>{
         const reference=metadata?.rooms?.[i];
@@ -91,6 +104,7 @@ export function soundParameterSnapshot(episode,state,blocked,metadata,options={}
       positionMeters:source.position,speedMetersPerSecond:source.speed,distanceMeters:source.distance,
       azimuthDegrees:source.azimuth,elevationDegrees:source.elevation,
       referenceDistanceMeters:source.refDistance,configuredSourceGain:source.gain,
+      fadeInSeconds:source.fadeIn??.12,fadeOutSeconds:source.fadeOut??.16,
       configuredReflectionSend:source.reverbSend??1,configuredOcclusion:source.occlusion??null,
       occluded:Boolean(blocked[source.id]),mix:sourceMixSettings(source,Boolean(blocked[source.id]),!options.solo||options.solo===source.id),
     })),
