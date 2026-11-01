@@ -1,0 +1,11 @@
+{
+  "source": "https://zenodo.org/records/6974033",
+  "archive": "AID.zip",
+  "recording": "AID/wavs/music_box_02_RHODE_NT1.wav",
+  "license": "CC BY 4.0",
+  "credit": "Philipp Goetz, Cagdas Tuna, Andreas Walther and Emanuel A. P. Habets",
+  "original": "aid-music-box-02-original.wav",
+  "playback": "aid-music-box-loop.wav",
+  "ffmpegFilters": "highpass=f=250,lowpass=f=7000,acompressor=threshold=0.018:ratio=6:attack=2:release=100:makeup=8,volume=1.4,alimiter=limit=0.5:level=false:latency=true,afade=t=in:st=0:d=0.04,afade=t=out:st=7.88:d=0.12",
+  "limitations": "Filtered and dynamically balanced recorded music box, not a measured sound-power calibration or an instance-matched object. No melody generation or pitch shifting."
+}

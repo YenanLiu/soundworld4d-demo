@@ -1,0 +1,155 @@
+{
+  "sources": [
+    {
+      "use": "indoor light paw taps",
+      "author": "Angellu16",
+      "title": "Dog Steps.wav",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/Angellu16/sounds/533824/",
+      "download": "https://cdn.freesound.org/previews/533/533824_11852214-hq.mp3",
+      "limitation": "Public HQ preview, not the original WAV. Floor type is not documented; no measured wood-material match."
+    },
+    {
+      "use": "outdoor soft-ground paw foley",
+      "author": "congusbongus; original by sabotovat",
+      "title": "Dog running / Wolf run.wav",
+      "license": "CC BY 3.0",
+      "url": "https://opengameart.org/content/dog-running-0",
+      "original": "https://freesound.org/people/sabotovat/sounds/414350/",
+      "download": "https://opengameart.org/sites/default/files/archive_0.zip",
+      "limitation": "Canine soft-ground foley excerpts, not a recording of the rendered dog or measured grass."
+    }
+  ],
+  "processing": "Mono 48 kHz; 210 Hz high-pass; indoor 6.5 kHz / outdoor 3.6 kHz low-pass; 130 ms transient excerpts; short edge fades; collection-level gain.",
+  "timing": "Distance-driven native gait phases, estimated from paw height, not measured force contacts.",
+  "records": [
+    {
+      "file": "wood-01.wav",
+      "source_excerpt_start_s": 0.3543125,
+      "duration_s": 0.13,
+      "bank_gain": 3.230412981881336,
+      "peak": 0.024492504075169563,
+      "sha256": "736973a4acd72336da48306392818712166ce948b627a9bff93187146bbb4a13"
+    },
+    {
+      "file": "wood-02.wav",
+      "source_excerpt_start_s": 0.7167291666666666,
+      "duration_s": 0.13,
+      "bank_gain": 3.230412981881336,
+      "peak": 0.02379738539457321,
+      "sha256": "a12794727b347d5405bf47cae56cbc5f39b8a72230f014705bc9f1869eeb086a"
+    },
+    {
+      "file": "wood-03.wav",
+      "source_excerpt_start_s": 1.2698958333333332,
+      "duration_s": 0.13,
+      "bank_gain": 3.230412981881336,
+      "peak": 0.028713298961520195,
+      "sha256": "d31b2d118280fc3d54b48e0eeeb84b9da7d670cb5d801cee0cff0edd1015e118"
+    },
+    {
+      "file": "wood-04.wav",
+      "source_excerpt_start_s": 1.4862916666666666,
+      "duration_s": 0.13,
+      "bank_gain": 3.230412981881336,
+      "peak": 0.062194257974624634,
+      "sha256": "d3650ead1dc25dc8433d48fb998d70f37c6a00c20ceeb642333e8f0e994d437a"
+    },
+    {
+      "file": "wood-05.wav",
+      "source_excerpt_start_s": 1.9616458333333333,
+      "duration_s": 0.13,
+      "bank_gain": 3.230412981881336,
+      "peak": 0.17999999225139618,
+      "sha256": "70e072960cd80a8cd4681f2d986ae5ec7f47cb60491c5ccf1adb9b8c70b9e29c"
+    },
+    {
+      "file": "wood-06.wav",
+      "source_excerpt_start_s": 2.1879583333333334,
+      "duration_s": 0.13,
+      "bank_gain": 3.230412981881336,
+      "peak": 0.17521527409553528,
+      "sha256": "b884976d5730269b06d0506dbbe164238fcc08498a9b7bca57152347db65c522"
+    },
+    {
+      "file": "wood-07.wav",
+      "source_excerpt_start_s": 2.6885625,
+      "duration_s": 0.13,
+      "bank_gain": 3.230412981881336,
+      "peak": 0.04231242462992668,
+      "sha256": "c618b96cf2e4e8582071d21a88f36667702cea68e1105685fac4b3cfb3ac4fe2"
+    },
+    {
+      "file": "wood-08.wav",
+      "source_excerpt_start_s": 3.6864375,
+      "duration_s": 0.13,
+      "bank_gain": 3.230412981881336,
+      "peak": 0.03266633674502373,
+      "sha256": "2a7496d0a78a15b924dc93228907fe8492191d8f29f35537e5da62495b85ff97"
+    },
+    {
+      "file": "grass-01.wav",
+      "source_excerpt_start_s": 0.08672916666666666,
+      "duration_s": 0.13,
+      "bank_gain": 0.22322928635221875,
+      "peak": 0.12999999523162842,
+      "sha256": "768c7c53b0833e35e66b7330bf4e2b58ebd7260800780e1d2287942e7bbfe5a3"
+    },
+    {
+      "file": "grass-02.wav",
+      "source_excerpt_start_s": 0.09395833333333334,
+      "duration_s": 0.13,
+      "bank_gain": 0.22322928635221875,
+      "peak": 0.0649777352809906,
+      "sha256": "84b6d87ca879032999f0dd1fe4af507571b9227d2dfc84f50242aa6f92a8bd45"
+    },
+    {
+      "file": "grass-03.wav",
+      "source_excerpt_start_s": 0.06747916666666667,
+      "duration_s": 0.13,
+      "bank_gain": 0.22322928635221875,
+      "peak": 0.042979076504707336,
+      "sha256": "a364eab86d11e06aede9894b43c442315828a3f7f76d731d80a515da6a26806c"
+    },
+    {
+      "file": "grass-04.wav",
+      "source_excerpt_start_s": 0.219375,
+      "duration_s": 0.13,
+      "bank_gain": 0.22322928635221875,
+      "peak": 0.09398774057626724,
+      "sha256": "fb94a3194db5c27eaaeb56c5c83081b21647eeb8137262364e3bf236ff10a072"
+    },
+    {
+      "file": "grass-05.wav",
+      "source_excerpt_start_s": 0.127875,
+      "duration_s": 0.13,
+      "bank_gain": 0.22322928635221875,
+      "peak": 0.05237423628568649,
+      "sha256": "d1d4085612ba622a3a51c5348ad8bdb4ae8578f2508016293c06fa631d9febcc"
+    },
+    {
+      "file": "grass-06.wav",
+      "source_excerpt_start_s": 0.1248125,
+      "duration_s": 0.13,
+      "bank_gain": 0.22322928635221875,
+      "peak": 0.03288617357611656,
+      "sha256": "6583d89dbfafa29d61f14136b4c278d9ce9336c968a74762c875c1ba0d6cf81d"
+    },
+    {
+      "file": "grass-07.wav",
+      "source_excerpt_start_s": 0.15504166666666666,
+      "duration_s": 0.13,
+      "bank_gain": 0.22322928635221875,
+      "peak": 0.09094034880399704,
+      "sha256": "8eea3c6ebad56bb7955bd1426f66ce1a9cbab84ff799c2c62433864ec4f7d6f0"
+    },
+    {
+      "file": "grass-08.wav",
+      "source_excerpt_start_s": 0.11285416666666667,
+      "duration_s": 0.13,
+      "bank_gain": 0.22322928635221875,
+      "peak": 0.05027143657207489,
+      "sha256": "9f187c4f7172e0213a9c9136df9840233407a856946848f2c1cbd8359051a6d2"
+    }
+  ]
+}

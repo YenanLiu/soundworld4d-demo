@@ -1,0 +1,64 @@
+{
+  "name": "SoundWorld4D website",
+  "scenes": [
+    "indoor",
+    "outdoor"
+  ],
+  "entry": "index.html",
+  "files": 540,
+  "uncompressedBytes": 260059280,
+  "largestFiles": [
+    {
+      "path": "episodes/assets/rocketbox/f001_opacity_color.tga",
+      "bytes": 16777260
+    },
+    {
+      "path": "episodes/assets/rocketbox/f001_body_color.tga",
+      "bytes": 12582956
+    },
+    {
+      "path": "episodes/assets/rocketbox/f001_body_normal.tga",
+      "bytes": 12582956
+    },
+    {
+      "path": "episodes/assets/rocketbox/f001_body_specular.tga",
+      "bytes": 12582956
+    },
+    {
+      "path": "episodes/assets/rocketbox/f001_head_color.tga",
+      "bytes": 12582956
+    },
+    {
+      "path": "episodes/assets/rocketbox/f001_head_normal.tga",
+      "bytes": 12582956
+    },
+    {
+      "path": "episodes/assets/rocketbox/f001_head_specular.tga",
+      "bytes": 12582956
+    },
+    {
+      "path": "episodes/assets/house/models/aws_robomaker_residential_DeskPortraitB_02/materials/textures/DeskPortraitB_02.jpg",
+      "bytes": 7314424
+    },
+    {
+      "path": "episodes/assets/photos/DeskPortraitB_02.jpg",
+      "bytes": 7314424
+    },
+    {
+      "path": "episodes/assets/house/models/aws_robomaker_residential_Carpet_01/materials/textures/aws_Carpet_01.png",
+      "bytes": 6664209
+    }
+  ],
+  "externalRuntimeDependencies": [],
+  "restrictions": [
+    "EARS speech: noncommercial use under recorded CC BY-NC 4.0 terms.",
+    "VLNVerse-derived door: redistribution permission not established by existing source records."
+  ],
+  "github": {
+    "repositoryRoot": ".",
+    "largestFileBytes": 16777260,
+    "filesAbove25MiB": [],
+    "filesAbove100MiB": [],
+    "limitReference": "https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github"
+  }
+}

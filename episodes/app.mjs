@@ -2,6 +2,7 @@ import {EPISODES,getState,annotations} from './state.mjs';
 import {EpisodeScene} from './scene.mjs';
 import {EpisodeAudio} from './audio.mjs';
 import {applySource,audioAssets,createReflectionBus,createSourceChannel,roomMix,scheduleSource} from './acoustics.mjs';
+import {CAMERA_COLOR,sourceStyle,timelineRows,cameraWaypoints} from './presentation.mjs';
 
 const $=id=>document.getElementById(id),icon=(id,name)=>{$(id).innerHTML=`<i data-lucide="${name}"></i>`;window.lucide.createIcons();};
 const scene=new EpisodeScene($('ego'),$('map'),text=>$('load-state').textContent=text),audio=new EpisodeAudio();
@@ -14,23 +15,30 @@ function renderTimeline(){
   const e=EPISODES[id];$('scene-kind').textContent=id==='indoor'?'INDOOR / 01':'OUTDOOR / 02';$('scene-title').textContent=e.title;$('story').textContent=e.story;$('scene-source').textContent=e.sourceLabel;
   $('events').innerHTML=e.events.map(x=>`<li data-event="${x.id}"><button data-time="${x.start}" title="Seek to ${x.start} seconds"><span class="event-time">${String(x.start).padStart(2,'0')}-${String(x.end).padStart(2,'0')} s</span><strong>${x.title}</strong><p>${x.detail}</p></button></li>`).join('');
   $('events').querySelectorAll('button').forEach(button=>button.onclick=()=>seek(Number(button.dataset.time)));
-  const rows=[{label:'Camera C',kind:'camera',windows:e.camera.slice(0,-1).flatMap((p,i)=>p.position.some((v,k)=>v!==e.camera[i+1].position[k])?[[p.t,e.camera[i+1].t]]:[])},{label:'S1 / '+e.sources[0].label,kind:'static',windows:e.sources[0].activity},{label:'S2 / Walk',kind:'actor',windows:e.sources[1].path.slice(0,-1).flatMap((p,i)=>p.position.some((v,k)=>v!==e.sources[1].path[i+1].position[k])?[[p.t,e.sources[1].path[i+1].t]]:[])},{label:'S2 / Speech',kind:'actor',windows:e.sources[1].activity}];
-  if(e.door)rows.push({label:'D1 / Open',kind:'static',windows:[e.door.opening]},{label:'D1 / Close',kind:'static',windows:[e.door.closing]},{label:'D1 / Latch',kind:'static',windows:e.sources.find(s=>s.id==='D1').activity});
-  for(const s of e.sources.filter(s=>['FP','F1'].includes(s.id)))rows.push({label:s.id+' / '+(s.id==='F1'?'Fan':'Footsteps'),kind:s.id==='F1'?'static':'actor',windows:s.activity});
-  $('tracks').innerHTML=rows.map(row=>`<div class="track ${row.kind}"><span>${row.label}</span><div class="track-rail">${row.windows.map(([a,b])=>`<span class="track-block" style="left:${a/e.duration*100}%;width:${(b-a)/e.duration*100}%"></span>`).join('')}<b class="track-playhead"></b></div></div>`).join('');
-  $('source-readouts').innerHTML=`<table><thead><tr><th>Source</th><th>Distance</th><th>Azimuth</th><th>Elevation</th><th class="path-state">Path / state</th><th>Solo</th></tr></thead><tbody>${e.sources.map(s=>`<tr id="read-${s.id}"><th><span class="identifier">${s.id}</span>${s.label}</th><td data-value="distance"></td><td data-value="azimuth"></td><td data-value="elevation"></td><td class="path-state" data-value="state"></td><td><button class="icon solo" data-solo="${s.id}" title="Solo ${s.label}" aria-label="Solo ${s.label}" aria-pressed="false"><i data-lucide="headphones"></i></button></td></tr>`).join('')}</tbody></table>`;
+  const rows=timelineRows(e);
+  $('tracks').innerHTML=['motion','audio'].map(mode=>`<div class="track-section"><strong>${mode==='motion'?'Motion':'Audio'}</strong><div class="track-axis">${[0,8,16,24,32].map(t=>`<span>${t} s</span>`).join('')}</div></div>`+rows.filter(row=>row.mode===mode).map(row=>`<div class="track ${mode}" data-track="${row.id}" style="--track-color:${row.color}"><span class="track-label"><i data-lucide="${row.icon}"></i><span>${row.label}</span></span><div class="track-rail" aria-label="${row.label}">${row.windows.map(([a,b])=>`<span class="track-block" style="left:${a/e.duration*100}%;width:${(b-a)/e.duration*100}%"></span>`).join('')}<b class="track-playhead"></b></div></div>`).join('')).join('');
+  $('source-options').innerHTML=e.sources.filter(s=>s.optional).map(s=>`<label><input type="checkbox" data-source-enabled="${s.id}" ${s.enabled!==false?'checked':''}><i data-lucide="${s.icon}"></i>${s.label}</label>`).join('');
+  $('source-options').querySelectorAll('input').forEach(input=>input.onchange=async()=>{
+    const source=e.sources.find(s=>s.id===input.dataset.sourceEnabled);source.enabled=input.checked;
+    if(!source.enabled&&(audio.solo===source.id||e.sources.find(s=>s.id===audio.solo)?.follows===source.id))audio.solo=null;
+    renderTimeline();const state=getState(id,time);scene.update(state);scene.render();renderUI(state);if(playing)await audio.start(state,scene);
+  });
+  document.querySelector('.legend').innerHTML=`<span style="--source-color:${CAMERA_COLOR}"><i data-lucide="camera"></i>Camera / listener</span>`+e.sources.filter(s=>!s.follows&&s.enabled!==false).map(s=>{const style=sourceStyle(s,id);return `<span style="--source-color:${style.color}"><i data-lucide="${s.id==='S2'?'person-standing':style.icon}"></i>${style.mapName}</span>`;}).join('');
+  $('map-waypoint-label').textContent=`Camera path points (C0-C${cameraWaypoints(e.camera).length-1})`;$('map-waypoints').checked=scene.showCameraWaypoints;
+  $('source-readouts').innerHTML=`<table><thead><tr><th>Source</th><th>Distance</th><th>Azimuth</th><th>Elevation</th><th class="path-state">Path / state</th><th>Solo</th></tr></thead><tbody>${e.sources.map(s=>{const style=sourceStyle(s,id);return `<tr id="read-${s.id}" style="--source-color:${style.color}"><th><span class="source-swatch"></span><span class="identifier">${s.id}</span>${style.name}</th><td data-value="distance"></td><td data-value="azimuth"></td><td data-value="elevation"></td><td class="path-state" data-value="state"></td><td><button class="icon solo" data-solo="${s.id}" title="Solo ${style.name}" aria-label="Solo ${style.name}" aria-pressed="false"><i data-lucide="headphones"></i></button></td></tr>`;}).join('')}</tbody></table>`;
   $('source-readouts').querySelectorAll('[data-solo]').forEach(button=>button.onclick=async()=>{audio.solo=audio.solo===button.dataset.solo?null:button.dataset.solo;if(playing)await audio.start(getState(id,time),scene);renderUI(getState(id,time));});
   $('reverb').disabled=!e.reverb;$('wet').disabled=!e.reverb;$('reverb').checked=audio.reverb;window.lucide.createIcons();
   for(const b of document.querySelectorAll('[data-scene]'))b.classList.toggle('selected',b.dataset.scene===id);
 }
 function renderUI(state){
   const s=time.toFixed(1);$('clock').textContent=`${s.padStart(4,'0')} / 32.0 s`;$('timebadge').textContent=s.padStart(4,'0')+' s';$('seek').value=time;
+  $('map-clock').textContent=s.padStart(4,'0')+' s';
   $('event-now').textContent=state.event.title;$('camera-coordinate').textContent=`x ${state.camera.position[0].toFixed(1)} · z ${state.camera.position[2].toFixed(1)} m`;
   document.querySelectorAll('.track-playhead').forEach(x=>x.style.left=`${time/32*100}%`);
   document.querySelectorAll('[data-event]').forEach(x=>x.classList.toggle('active',x.dataset.event===state.event.id));
   $('listener-pose').textContent=`Camera [${state.camera.position.map(v=>v.toFixed(2)).join(', ')}] m · yaw ${(Math.atan2(state.camera.forward[0],-state.camera.forward[2])*180/Math.PI).toFixed(0)}°`;
   $('reverb-label').textContent=EPISODES[id].reverb?(audio.reverb?`${roomMix(state)[0]>.5?'Bedroom · target 0.50 s':'Living room · target 0.75 s'} (assumed)`:'Room reflections off'):'Open air · no room reverb';
-  state.sources.forEach(s=>{const row=$('read-'+s.id),blocked=scene.obstruction(s.position,state.camera.position),values={distance:s.distance.toFixed(2)+' m',azimuth:(s.azimuth>=0?'+':'')+s.azimuth.toFixed(1)+'°',elevation:(s.elevation>=0?'+':'')+s.elevation.toFixed(1)+'°',state:`${s.active?'Active':'Silent'} · ${blocked?'Occluded':'Clear'}`};for(const [key,value] of Object.entries(values))row.querySelector(`[data-value="${key}"]`).textContent=value;row.classList.toggle('active',s.active);row.querySelector('button').setAttribute('aria-pressed',audio.solo===s.id);});
+  state.sources.forEach(s=>{const row=$('read-'+s.id),blocked=scene.obstruction(s.position,state.camera.position),values={distance:s.distance.toFixed(2)+' m',azimuth:(s.azimuth>=0?'+':'')+s.azimuth.toFixed(1)+'°',elevation:(s.elevation>=0?'+':'')+s.elevation.toFixed(1)+'°',state:s.enabled?`${s.active?'Active':'Silent'} · ${blocked?'Occluded':'Clear'}`:'Disabled'};for(const [key,value] of Object.entries(values))row.querySelector(`[data-value="${key}"]`).textContent=value;row.classList.toggle('active',s.active);row.querySelector('button').disabled=!s.enabled;row.querySelector('button').setAttribute('aria-pressed',audio.solo===s.id);});
 }
 async function selectScene(next){
   if(switching)return;switching=true;playing=false;audio.stop();icon('play','play');id=next;time=0;uiStamp=-1;window.episodesDemo.ready=false;renderTimeline();$('load-state').classList.remove('error');
@@ -48,7 +56,7 @@ async function togglePlay(){
 function tick(now){
   last=now;
   if(playing&&audio.playing){time=Math.min(32,audio.startTime+audio.context.currentTime-audio.startClock);if(time>=32){playing=false;audio.stop();icon('play','play');}}
-  if(scene.ready&&!window.episodesDemo?.capturing){const s=getState(id,time);scene.update(s);if(playing)audio.update(s,scene);scene.render();if(Math.floor(time*20)!==uiStamp){renderUI(s);uiStamp=Math.floor(time*20);}}
+  if(scene.ready&&!window.episodesDemo?.capturing&&(playing||Math.floor(time*20)!==uiStamp)){const s=getState(id,time);scene.update(s);if(playing)audio.update(s,scene);scene.render();if(Math.floor(time*20)!==uiStamp){renderUI(s);uiStamp=Math.floor(time*20);}}
   requestAnimationFrame(tick);
 }
 
@@ -79,6 +87,11 @@ async function exportEpisode(){
     zip.file('sources.csv','time,id,x,y,z,speed_m_s,distance_m,azimuth_deg,elevation_deg,right_m,up_m,forward_m,active\n'+ann.frames.flatMap(f=>f.sources.map(s=>[f.time,s.id,...s.position,s.speed,s.distance,s.azimuthDeg,s.elevationDeg,...s.relativePosition,s.active].join(','))).join('\n'));
     zip.file('audio-settings.json',JSON.stringify({reverb:audio.reverb,wet:audio.wet,rooms:e.reverb||[],solo:'Audition only; exports include all selected sources'},null,2));
     for(const [name,url] of [['SOURCES.json','./SOURCES.json'],['acoustics-metadata.json','./assets/audio/acoustics-metadata.json'],['footstep-manifest.json','./assets/audio/footsteps/manifest.json']])zip.file(name,await (await fetch(url)).text());
+    if(id==='indoor')zip.file('music-box-metadata.json',await (await fetch('./assets/audio/music-box-metadata.json')).text());
+    zip.file('living-assets.json',await (await fetch('./assets/living/manifest.json')).text());
+    zip.file('paw-audio-manifest.json',await (await fetch('./assets/living/paws/manifest.json')).text());
+    zip.file('paw-audio-credits.txt',await (await fetch('./assets/living/paws/CREDITS.txt')).text());
+    zip.file('dog-gait-profile.json',await (await fetch('./assets/living/paws/gait-profile.json')).text());
     zip.file('audio/spatial-mix.wav',await renderAudio(e.sources.map((_,i)=>i)));
     for(let i=0;i<e.sources.length;i++)zip.file(`audio/${e.sources[i].id}-spatial.wav`,await renderAudio([i]));
     zip.file('README.txt','Spatial audio uses browser HRTF, inverse-distance attenuation, a raycast occlusion proxy and indoor stereo shoebox convolution reflections. Fixed room responses and their dimensions/absorption are assumptions, not measured moving-pose RIRs of this house. Azimuth is positive right; elevation positive up; relative XYZ are right/up/forward in the camera basis. Scene geometry lives in episodes/assets. See README.md, acoustics-metadata.json and SOURCES.json for provenance. EARS is CC BY-NC 4.0.');
@@ -95,6 +108,26 @@ $('play').onclick=togglePlay;$('restart').onclick=()=>seek(0);$('seek').oninput=
 $('reverb').onchange=e=>{audio.reverb=e.target.checked;renderUI(getState(id,time));};$('wet').oninput=e=>{audio.wet=Number(e.target.value);$('wet-value').textContent=Math.round(audio.wet*100)+'%';};
 $('sources-btn').onclick=showSources;$('close-dialog').onclick=()=>$('source-dialog').close();$('export-btn').onclick=exportEpisode;
 $('overview-export').onclick=()=>download(new Blob([Uint8Array.from(atob(scene.overviewPng().split(',')[1]),c=>c.charCodeAt(0))],{type:'image/png'}),`${id}-trajectory-overview.png`);
+$('render-quality').value=scene.quality;
+$('render-quality').onchange=e=>scene.setQuality(e.target.value);
+$('map-waypoints').onchange=e=>scene.setCameraWaypoints(e.target.checked);
+$('frame-export').onclick=async()=>{
+  if(!scene.ready)return;
+  const button=$('frame-export');button.disabled=true;
+  try{
+    const png=scene.capturePng();
+    download(await (await fetch(png)).blob(),`soundworld4d-${id}-${time.toFixed(2)}s-3840px.png`);
+  }catch(error){console.error(error);$('load-state').textContent='Image export failed: '+error.message;}
+  finally{button.disabled=false;}
+};
+$('view-fullscreen').onclick=async()=>{
+  try{if(document.fullscreenElement)await document.exitFullscreen();else await $('ego-wrap').requestFullscreen();}
+  catch(error){$('load-state').textContent='Full screen unavailable: '+error.message;}
+};
+document.addEventListener('fullscreenchange',()=>{
+  const active=document.fullscreenElement===$('ego-wrap');icon('view-fullscreen',active?'minimize':'maximize');
+  $('view-fullscreen').title=$('view-fullscreen').ariaLabel=active?'Exit full screen':'Full screen';scene.resize();scene.render();
+});
 document.querySelectorAll('[data-scene]').forEach(button=>button.onclick=()=>selectScene(button.dataset.scene));
 new ResizeObserver(()=>{scene.resize();scene.render();}).observe($('ego-wrap'));new ResizeObserver(()=>{scene.resize();scene.render();}).observe($('map-wrap'));
 window.episodesDemo={ready:false,scene,audio,getState:()=>getState(id,time),get episode(){return EPISODES[id];},seek,selectScene,togglePlay,exportEpisode,renderAudio,annotations:()=>annotations(id),get time(){return time;},get playing(){return playing;}};

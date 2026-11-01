@@ -1,0 +1,8 @@
+Indoor: Dog Steps.wav by Angellu16, Freesound 533824, CC0 1.0.
+https://freesound.org/people/Angellu16/sounds/533824/
+Outdoor: Dog running by congusbongus, derived from Wolf run.wav by sabotovat.
+https://opengameart.org/content/dog-running-0
+https://freesound.org/people/sabotovat/sounds/414350/
+License: https://creativecommons.org/licenses/by/3.0/
+Local modifications: isolated transient excerpts, filtering, mono conversion and gain reduction.
+Surface categories are illustrative; no exact material, body-size or physical calibration.

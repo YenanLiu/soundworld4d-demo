@@ -1,0 +1,206 @@
+{
+  "provider": "Poly Haven",
+  "credit": "Powered by Poly Haven",
+  "files": [
+    {
+      "asset": "lebombo",
+      "component": "indoor environment",
+      "path": "interior.hdr",
+      "source": "https://polyhaven.com/a/lebombo",
+      "download": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/lebombo_1k.hdr",
+      "bytes": 1476953,
+      "md5": "eb75d6df7d824e83940e2c7f2ef65c70",
+      "license": "CC0",
+      "attribution": "Poly Haven"
+    },
+    {
+      "asset": "kloppenheim_06_puresky",
+      "component": "sky-only environment",
+      "path": "sky.hdr",
+      "source": "https://polyhaven.com/a/kloppenheim_06_puresky",
+      "download": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/kloppenheim_06_puresky_2k.hdr",
+      "bytes": 4434394,
+      "md5": "590a829b3cf71216451655e601d542c6",
+      "license": "CC0",
+      "attribution": "Poly Haven"
+    },
+    {
+      "asset": "wood_floor_deck",
+      "component": "Diffuse",
+      "path": "wood-diffuse.jpg",
+      "source": "https://polyhaven.com/a/wood_floor_deck",
+      "download": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_floor_deck/wood_floor_deck_diff_1k.jpg",
+      "bytes": 925789,
+      "md5": "186a695239216a4b9dc970a87d6dbb15",
+      "license": "CC0",
+      "attribution": "Poly Haven"
+    },
+    {
+      "asset": "wood_floor_deck",
+      "component": "nor_gl",
+      "path": "wood-normal.jpg",
+      "source": "https://polyhaven.com/a/wood_floor_deck",
+      "download": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_floor_deck/wood_floor_deck_nor_gl_1k.jpg",
+      "bytes": 665094,
+      "md5": "dddabd549ede92e370d5268b0d895179",
+      "license": "CC0",
+      "attribution": "Poly Haven"
+    },
+    {
+      "asset": "wood_floor_deck",
+      "component": "rough",
+      "path": "wood-roughness.jpg",
+      "source": "https://polyhaven.com/a/wood_floor_deck",
+      "download": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_floor_deck/wood_floor_deck_rough_1k.jpg",
+      "bytes": 658448,
+      "md5": "ff891ac48e0a9db02a665d2ae9bba36a",
+      "license": "CC0",
+      "attribution": "Poly Haven"
+    },
+    {
+      "asset": "forest_ground_04",
+      "component": "nor_gl",
+      "path": "ground-normal.jpg",
+      "source": "https://polyhaven.com/a/forest_ground_04",
+      "download": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_ground_04/forest_ground_04_nor_gl_1k.jpg",
+      "bytes": 1326812,
+      "md5": "a010a0802c2d9a930c6f00d3b1f196d2",
+      "license": "CC0",
+      "attribution": "Poly Haven"
+    },
+    {
+      "asset": "forest_ground_04",
+      "component": "rough",
+      "path": "ground-roughness.jpg",
+      "source": "https://polyhaven.com/a/forest_ground_04",
+      "download": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_ground_04/forest_ground_04_rough_1k.jpg",
+      "bytes": 627507,
+      "md5": "b5c7ba5c16f00261e9a765d52cf7e0ac",
+      "license": "CC0",
+      "attribution": "Poly Haven"
+    },
+    {
+      "asset": "leafy_grass",
+      "component": "Diffuse",
+      "path": "grass-diffuse.jpg",
+      "source": "https://polyhaven.com/a/leafy_grass",
+      "download": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/leafy_grass/leafy_grass_diff_1k.jpg",
+      "bytes": 1195394,
+      "md5": "0dbc071e91d6905edfcfbe8eb785a1ab",
+      "license": "CC0",
+      "attribution": "Poly Haven"
+    },
+    {
+      "asset": "leafy_grass",
+      "component": "nor_gl",
+      "path": "grass-normal.jpg",
+      "source": "https://polyhaven.com/a/leafy_grass",
+      "download": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/leafy_grass/leafy_grass_nor_gl_1k.jpg",
+      "bytes": 1466049,
+      "md5": "8279e096e204ea326d57a318869f99df",
+      "license": "CC0",
+      "attribution": "Poly Haven"
+    },
+    {
+      "asset": "leafy_grass",
+      "component": "rough",
+      "path": "grass-roughness.jpg",
+      "source": "https://polyhaven.com/a/leafy_grass",
+      "download": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/leafy_grass/leafy_grass_rough_1k.jpg",
+      "bytes": 511385,
+      "md5": "05f6bb1383e12b327727d313c5899cf2",
+      "license": "CC0",
+      "attribution": "Poly Haven"
+    },
+    {
+      "asset": "tree_small_02",
+      "component": "original leaf alpha",
+      "path": "leaves-alpha.png",
+      "source": "https://polyhaven.com/a/tree_small_02",
+      "download": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/tree_small_02/tree_small_02_leaves_alpha_1k.png",
+      "bytes": 264711,
+      "md5": "63199ba87a9e8928424bd8c3b8017bd0",
+      "license": "CC0",
+      "attribution": "Poly Haven"
+    },
+    {
+      "asset": "grass_medium_02",
+      "component": "grass tuft model",
+      "path": "grass/grass_medium_02.gltf",
+      "source": "https://polyhaven.com/a/grass_medium_02",
+      "download": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/grass_medium_02/grass_medium_02_1k.gltf",
+      "bytes": 8864,
+      "md5": "dd8f166a6399238553bc3b2931677b68",
+      "license": "CC0",
+      "attribution": "Poly Haven"
+    },
+    {
+      "asset": "grass_medium_02",
+      "component": "textures/grass_medium_02_nor_gl_1k.jpg",
+      "path": "grass/textures/grass_medium_02_nor_gl_1k.jpg",
+      "source": "https://polyhaven.com/a/grass_medium_02",
+      "download": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/grass_medium_02/grass_medium_02_nor_gl_1k.jpg",
+      "bytes": 118146,
+      "md5": "90b4c27b0c0ff058bd37b88bb70784c1",
+      "license": "CC0",
+      "attribution": "Poly Haven"
+    },
+    {
+      "asset": "grass_medium_02",
+      "component": "textures/grass_medium_02_diff_1k.jpg",
+      "path": "grass/textures/grass_medium_02_diff_1k.jpg",
+      "source": "https://polyhaven.com/a/grass_medium_02",
+      "download": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/grass_medium_02/grass_medium_02_diff_1k.jpg",
+      "bytes": 161235,
+      "md5": "4bb5230e09358d60dd767331685b2d36",
+      "license": "CC0",
+      "attribution": "Poly Haven"
+    },
+    {
+      "asset": "grass_medium_02",
+      "component": "textures/grass_medium_02_arm_1k.jpg",
+      "path": "grass/textures/grass_medium_02_arm_1k.jpg",
+      "source": "https://polyhaven.com/a/grass_medium_02",
+      "download": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/grass_medium_02/grass_medium_02_arm_1k.jpg",
+      "bytes": 241181,
+      "md5": "2b7a7e6f8b71fd2da62cf172d4784bbb",
+      "license": "CC0",
+      "attribution": "Poly Haven"
+    },
+    {
+      "asset": "grass_medium_02",
+      "component": "grass_medium_02.bin",
+      "path": "grass/grass_medium_02.bin",
+      "source": "https://polyhaven.com/a/grass_medium_02",
+      "download": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/grass_medium_02/grass_medium_02.bin",
+      "bytes": 272048,
+      "md5": "145041ae03fe02783a0adbd1cdcb4988",
+      "license": "CC0",
+      "attribution": "Poly Haven"
+    },
+    {
+      "asset": "grass_medium_02",
+      "component": "grass alpha",
+      "path": "grass/alpha.png",
+      "source": "https://polyhaven.com/a/grass_medium_02",
+      "download": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/grass_medium_02/grass_medium_02_alpha_1k.png",
+      "bytes": 110617,
+      "md5": "b231cd6a1b5eb7ae21e7c2e626f8318c",
+      "license": "CC0",
+      "attribution": "Poly Haven"
+    },
+    {
+      "asset": "Three.js water example",
+      "component": "water normals",
+      "path": "water-normal.jpg",
+      "source": "https://raw.githubusercontent.com/mrdoob/three.js/r180/examples/textures/waternormals.jpg",
+      "bytes": 248813,
+      "license": "Three.js repository MIT; see retained vendor/three-LICENSE.txt"
+    }
+  ],
+  "notes": [
+    "HDRIs and PBR maps improve appearance; they are not measurements of the modeled scene or its acoustic properties.",
+    "The outdoor background is sky-only, not a photographic substitute for navigable geometry.",
+    "Three.js add-ons are pinned to r180, matching the existing runtime; its MIT license is retained in vendor/."
+  ]
+}

@@ -19,13 +19,15 @@ export function createReflectionBus(context,episode,buffers,destination,options=
 export function createSourceChannel(context,source,reflections,destination){
   const input=context.createGain(),panner=new PannerNode(context,{panningModel:'HRTF',distanceModel:'inverse',refDistance:source.refDistance,rolloffFactor:1,maxDistance:60});
   const filter=context.createBiquadFilter();filter.type='lowpass';filter.frequency.value=19000;
-  const gain=context.createGain(),send=context.createGain();input.connect(panner);panner.connect(filter);filter.connect(gain);gain.connect(destination);input.connect(send);send.connect(reflections.input);
-  return {source,input,panner,filter,gain,send,voices:[],dispose(){for(const v of this.voices){try{v.node.stop();}catch{}v.node.disconnect();v.envelope.disconnect();}for(const n of [input,panner,filter,gain,send])n.disconnect();}};
+  const gain=context.createGain(),send=context.createGain(),sendFilter=context.createBiquadFilter();sendFilter.type='lowpass';sendFilter.frequency.value=19000;
+  input.connect(panner);panner.connect(filter);filter.connect(gain);gain.connect(destination);input.connect(sendFilter);sendFilter.connect(send);send.connect(reflections.input);
+  return {source,input,panner,filter,gain,send,sendFilter,voices:[],dispose(){for(const v of this.voices){try{v.node.stop();}catch{}v.node.disconnect();v.envelope.disconnect();}for(const n of [input,panner,filter,gain,send,sendFilter])n.disconnect();}};
 }
 
 // Schedule contacts on the audio clock, including the offset when seeking into a sound.
 export function scheduleSource(context,channel,buffers,from=0,now=context.currentTime){
-  const s=channel.source,events=s.audioEvents||s.activity.map(([start,end])=>({start,end,audio:s.audio,level:1}));
+  const s=channel.source;if(s.enabled===false)return;
+  const events=s.audioEvents||s.activity.map(([start,end])=>({start,end,audio:s.audio,level:1}));
   for(const event of events){
     const {start:a,end:b}=event,buffer=buffers.get(event.audio);
     const end=Math.min(b,s.loop?b:a+buffer.duration);if(end<=from)continue;
@@ -41,7 +43,9 @@ export function scheduleSource(context,channel,buffers,from=0,now=context.curren
 
 export function applySource(channel,item,blocked,set,enabled=true){
   item.position.forEach((v,k)=>set(channel.panner[['positionX','positionY','positionZ'][k]],v));
-  set(channel.input.gain,enabled?item.gain:0);set(channel.gain.gain,blocked?.24:1);set(channel.filter.frequency,blocked?1050:19000);
+  const occlusion=item.occlusion,cutoff=occlusion?.lowpassHz??1050;
+  set(channel.input.gain,enabled&&item.enabled!==false?item.gain:0);set(channel.gain.gain,blocked?(occlusion?.directGain??.24):1);set(channel.filter.frequency,blocked?cutoff:19000);
+  set(channel.sendFilter.frequency,blocked&&occlusion?cutoff:19000);
   // The diffuse return uses a gentler distance falloff than the direct path.
-  set(channel.send.gain,(item.reverbSend??1)*item.refDistance/(item.refDistance+.3*item.distance)*(blocked?.55:1));channel.blocked=blocked;
+  set(channel.send.gain,(item.reverbSend??1)*item.refDistance/(item.refDistance+.3*item.distance)*(blocked?(occlusion?.reflectionGain??.55):1));channel.blocked=blocked;
 }

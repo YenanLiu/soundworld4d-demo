@@ -1,0 +1,66 @@
+{
+  "records": [
+    {
+      "file": "shepherd.glb",
+      "url": "https://static.poly.pizza/f11b6abc-28a4-4d23-bfce-679a8e2b9da1.glb",
+      "source": "https://poly.pizza/m/Hssa6NPc6W",
+      "license": "Quaternius / Creative Commons Attribution 3.0 as listed by the distributor; retain attribution and license link",
+      "bytes": 914220,
+      "sha256": "ca9925e5aeb95242dd77a7474f6b54db93ad5de4beb45de290024cf6447ccd65"
+    },
+    {
+      "file": "dog-original.wav",
+      "url": "https://bigsoundbank.com/UPLOAD/bwf-en/2353.wav",
+      "source": "https://bigsoundbank.com/old-dog-barking-2-s2353.html",
+      "license": "CC0 / BigSoundBank",
+      "bytes": 1999470,
+      "sha256": "e44970b8df56cdb0a8bc73ce8ce8d85a55a9e324434e7ef5554d5e5b3750bda8"
+    },
+    {
+      "file": "bird-original.wav",
+      "url": "https://bigsoundbank.com/UPLOAD/bwf-en/3493.wav",
+      "source": "https://bigsoundbank.com/common-blackbird-20-s3493.html",
+      "license": "CC0 / BigSoundBank",
+      "bytes": 560438,
+      "sha256": "c219ad67d1cfbd2a8caf6e777948bbf690bfcec8a573b877906f9fb9ddb26ecf"
+    },
+    {
+      "file": "vacuum-original.wav",
+      "url": "https://bigsoundbank.com/UPLOAD/bwf-en/1623.wav",
+      "source": "https://bigsoundbank.com/robot-vacuum-s1623.html",
+      "license": "CC0 / BigSoundBank",
+      "bytes": 22823280,
+      "sha256": "9eb5b31f285d237d0178f13d5cefb3e49ef2d2b08f29dbd43e258d6f9747d30a"
+    },
+    {
+      "file": "dog-bark.wav",
+      "bytes": 53176,
+      "sha256": "e498fd681b5146607a5d7a52d3264738bbd2443bed7446ec4d7bb6df48d82f88",
+      "derived": true
+    },
+    {
+      "file": "bird-call.wav",
+      "bytes": 307436,
+      "sha256": "5a730aba3bc9c5e79e107484c797a0a8c25e4e7a8fb86873226ce62f147a38c5",
+      "derived": true
+    },
+    {
+      "file": "vacuum-loop.wav",
+      "bytes": 1133084,
+      "sha256": "fb05702abec6abb7a3ac27c5a2762508dfd359109bfb3cf0f6386af76699a9b3",
+      "derived": true
+    }
+  ],
+  "processing": {
+    "dog": "1.48-2.03 s single bark, mono 48 kHz, 90 Hz highpass, 0.65 gain, short edge fades",
+    "bird": "0-3.2 s, mono 48 kHz, 500 Hz highpass, 0.65 gain, edge fades",
+    "vacuum": "30-42 s steady excerpt, mono 48 kHz, 70 Hz highpass, 0.2 s loop crossfade"
+  },
+  "limitations": [
+    "Dog uses Quaternius German Shepard native Idle and Walk; the head movement during bark events is authored and not articulatory synchronization.",
+    "The perched bird and robot are locally authored. These are illustrative assets, not scans or exact physical instances.",
+    "Recordings are not anechoic; source gains and robot speed are not acoustically calibrated.",
+    "Robot geometry and its cleaning route are authored, not a navigation policy or simulated suction.",
+    "Earlier Mesh2Motion candidates may remain in the working folder for reference but are not loaded or included in deployment."
+  ]
+}

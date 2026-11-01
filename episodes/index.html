@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f6f6f5">
+  <meta name="theme-color" content="#f7f8fc">
   <title>SoundWorld4D · Scene Episodes</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="./style.css">
@@ -28,11 +28,12 @@
       <div class="sectionbar"><div><span class="eyebrow" id="scene-kind">INDOOR / 01</span><h1 id="scene-title">A visitor opens and closes the door</h1></div><span class="status" id="load-state">Loading assets...</span></div>
       <div class="views">
         <div class="view primary">
-          <div class="canvas-wrap" id="ego-wrap"><canvas id="ego"></canvas><div class="view-label">First person / listener</div><span class="timebadge" id="timebadge">00.0 s</span></div>
+          <div class="canvas-wrap" id="ego-wrap"><canvas id="ego"></canvas><div class="view-label">First person / listener</div><span class="timebadge" id="timebadge">00.0 s</span><div class="view-tools"><select id="render-quality" aria-label="Render quality" title="Render quality"><option value="balanced">Standard</option><option value="high" selected>High</option><option value="ultra">Ultra</option></select><button id="frame-export" class="icon" title="Save PNG (3840 px long edge)" aria-label="Save PNG (3840 px long edge)"><i data-lucide="camera"></i></button><button id="view-fullscreen" class="icon" title="Full screen" aria-label="Full screen"><i data-lucide="maximize"></i></button></div></div>
           <div class="view-meta"><span id="event-now">Preparing scene</span><span id="camera-coordinate">x - / z -</span></div>
         </div>
         <div class="view overview">
-          <div class="canvas-wrap" id="map-wrap"><canvas id="map"></canvas><div class="view-label">Scene / trajectory overview</div><button id="overview-export" class="icon map-save" title="Save trajectory overview" aria-label="Save trajectory overview"><i data-lucide="image-down"></i></button></div>
+          <div class="canvas-wrap" id="map-wrap"><canvas id="map" role="img" aria-label="Top-down scene, current camera and sound-source trajectories"></canvas><div class="view-label">Scene / trajectory overview</div><button id="overview-export" class="icon map-save" title="Save trajectory overview" aria-label="Save trajectory overview"><i data-lucide="image-down"></i></button></div>
+          <div class="map-toolbar"><label title="Camera path positions and timestamps"><input id="map-waypoints" type="checkbox"><i data-lucide="route"></i><span id="map-waypoint-label">Camera path points</span></label><span id="map-clock">00.0 s</span></div>
           <div class="legend"><span><b class="camera-line"></b>Camera C</span><span><b class="source-line"></b>Person S2</span><span><b class="static-dot"></b>Fixed S1</span></div>
         </div>
       </div>
@@ -43,6 +44,7 @@
         <input id="seek" type="range" min="0" max="32" value="0" step="0.02" aria-label="Timeline">
         <button id="mute" class="icon" title="Mute" aria-label="Mute"><i data-lucide="volume-2"></i></button>
       </div>
+      <div id="source-options" class="source-options" role="group" aria-label="Additional sources"></div>
       <section class="telemetry" aria-label="Live source and listener telemetry">
         <div class="telemetry-heading"><h2>Source / listener telemetry</h2><span id="listener-pose"></span></div>
         <div class="acoustic-controls"><label><input id="reverb" type="checkbox" checked>Room reflections</label><input id="wet" type="range" min="0" max="1.2" step=".05" value=".55" aria-label="Reflection return level"><output id="wet-value">55%</output><span id="reverb-label"></span></div>
